@@ -1,5 +1,5 @@
 [build]
-command = "composer install --no-dev --optimize-autoloader"
+command = "echo 'Build completed'"
 
 [deploy]
 start = "php -S 0.0.0.0:8080"
