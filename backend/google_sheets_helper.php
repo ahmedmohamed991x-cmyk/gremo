@@ -3,56 +3,75 @@
 // Lightweight helper to fetch rows from Google Sheets using a Service Account
 
 function gsheet_fetch_rows(array $cfg): array {
+    // Check if we have the required dependencies
     $vendor = dirname(__DIR__) . '/vendor/autoload.php';
     if (!file_exists($vendor)) {
-        throw new Exception('Composer vendor/autoload.php not found. Run composer install to add google/apiclient.');
+        // Fallback: return error message instead of throwing exception
+        return [
+            'error' => 'Google API client not available. Please run composer install or check credentials.',
+            'fallback_data' => []
+        ];
     }
     require_once $vendor;
 
     $credentialsPath = $cfg['credentials_path'] ?? (dirname(__DIR__) . '/config/service-account.json');
     if (!file_exists($credentialsPath)) {
-        throw new Exception('Google service account credentials not found at ' . $credentialsPath);
+        // Fallback: return error message instead of throwing exception
+        return [
+            'error' => 'Google service account credentials not found. Please check config/service-account.json',
+            'fallback_data' => []
+        ];
     }
 
     $spreadsheetId = $cfg['spreadsheet_id'] ?? '';
     // Use a wide range to ensure we fetch all columns
     $range = $cfg['range'] ?? 'A:ZZZ';
     if (!$spreadsheetId) {
-        throw new Exception('spreadsheet_id is required (config or request body).');
+        return [
+            'error' => 'spreadsheet_id is required (config or request body).',
+            'fallback_data' => []
+        ];
     }
 
-    // Google Client
-    $client = new Google\Client();
-    $client->setApplicationName('Scholarship CRM');
-    $client->setAuthConfig($credentialsPath);
-    $client->setScopes([Google\Service\Sheets::SPREADSHEETS_READONLY]);
-    
-    // Fix SSL certificate issues on Windows
-    $client->setHttpClient(new GuzzleHttp\Client([
-        'verify' => false, // Disable SSL verification for development
-        'timeout' => 30
-    ]));
+    try {
+        // Google Client
+        $client = new Google\Client();
+        $client->setApplicationName('Scholarship CRM');
+        $client->setAuthConfig($credentialsPath);
+        $client->setScopes([Google\Service\Sheets::SPREADSHEETS_READONLY]);
+        
+        // Fix SSL certificate issues on Windows
+        $client->setHttpClient(new GuzzleHttp\Client([
+            'verify' => false, // Disable SSL verification for development
+            'timeout' => 30
+        ]));
 
-    $service = new Google\Service\Sheets($client);
-    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
-    $values = $response->getValues() ?: [];
-    if (count($values) === 0) {
-        return [];
-    }
-
-    // First row is headers
-    $headers = array_map(function($h) { return trim((string)$h); }, $values[0]);
-    $rows = [];
-    for ($i = 1; $i < count($values); $i++) {
-        $rowValues = $values[$i];
-        $assoc = [];
-        foreach ($headers as $idx => $key) {
-            $assoc[$key] = isset($rowValues[$idx]) ? $rowValues[$idx] : '';
+        $service = new Google\Service\Sheets($client);
+        $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+        $values = $response->getValues() ?: [];
+        if (count($values) === 0) {
+            return [];
         }
-        $rows[] = $assoc;
-    }
 
-    return $rows;
+        // First row is headers
+        $headers = array_map(function($h) { return trim((string)$h); }, $values[0]);
+        $rows = [];
+        for ($i = 1; $i < count($values); $i++) {
+            $rowValues = $values[$i];
+            $assoc = [];
+            foreach ($headers as $idx => $key) {
+                $assoc[$key] = isset($rowValues[$idx]) ? $rowValues[$idx] : '';
+            }
+            $rows[] = $assoc;
+        }
+
+        return $rows;
+    } catch (Exception $e) {
+        return [
+            'error' => 'Google API Error: ' . $e->getMessage(),
+            'fallback_data' => []
+        ];
+    }
 }
 
 // Helper function to map Arabic Google Form columns to system fields

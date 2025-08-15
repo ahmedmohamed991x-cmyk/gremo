@@ -2,7 +2,8 @@
     "name": "ahmedmohamed991x/gremo",
     "type": "project",
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.0",
+        "google/apiclient": "^2.18"
     },
     "description": "Gremo Student Management System"
 }
