@@ -1,0 +1,120 @@
+[
+    {
+        "id": 1755181971725,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "application_filing",
+        "helpDetails": ";",
+        "status": "approved",
+        "timestamp": "2025-08-14T14:32:51.725Z"
+    },
+    {
+        "id": 1755182387752,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "application_filing",
+        "helpDetails": "''",
+        "status": "rejected",
+        "timestamp": "2025-08-14T14:39:47.752Z"
+    },
+    {
+        "id": 1755182895163,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "document_review",
+        "helpDetails": "ll",
+        "status": "rejected",
+        "timestamp": "2025-08-14T14:48:15.163Z"
+    },
+    {
+        "id": 1755182941555,
+        "studentId": "4",
+        "studentName": "يوسف محمد عوض عبدالعاطي هيكل",
+        "requesterId": 2,
+        "requesterName": "kareem@gmail.com",
+        "helpType": "file_upload",
+        "helpDetails": "ll",
+        "status": "accepted",
+        "timestamp": "2025-08-14T14:49:01.555Z"
+    },
+    {
+        "id": 1755183646353,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "document_review",
+        "helpDetails": "fggfg",
+        "status": "rejected",
+        "timestamp": "2025-08-14T15:00:46.353Z"
+    },
+    {
+        "id": 1755184150407,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "other",
+        "helpDetails": "YTYERTY",
+        "status": "rejected",
+        "timestamp": "2025-08-14T15:09:10.407Z"
+    },
+    {
+        "id": 1755184883100,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "application_filing",
+        "helpDetails": "fasfsdfsfg",
+        "status": "accepted",
+        "timestamp": "2025-08-14T15:21:23.100Z",
+        "assignedAdminId": 2,
+        "readBy": []
+    },
+    {
+        "id": 1755185241161,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 4,
+        "requesterName": "mtomh92@gmail.com",
+        "helpType": "document_review",
+        "helpDetails": "4ffsgfgf",
+        "status": "revoked",
+        "timestamp": "2025-08-14T15:27:21.161Z",
+        "assignedAdminId": 2,
+        "readBy": []
+    },
+    {
+        "id": 1755200526205,
+        "studentId": "3",
+        "studentName": "مريم محمد احمد السيد محمد",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "application_filing",
+        "helpDetails": "fggsfg",
+        "status": "pending",
+        "timestamp": "2025-08-14T19:42:06.205Z",
+        "assignedAdminId": 4,
+        "readBy": []
+    },
+    {
+        "id": 1755200536526,
+        "studentId": "1",
+        "studentName": "shf",
+        "requesterId": 3,
+        "requesterName": "abdulmalik@gmail.com",
+        "helpType": "file_upload",
+        "helpDetails": "dg",
+        "status": "revoked",
+        "timestamp": "2025-08-14T19:42:16.526Z",
+        "assignedAdminId": 2,
+        "readBy": []
+    }
+]

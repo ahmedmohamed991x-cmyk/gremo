@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Student Transfer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        input, button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .current-distribution { background: #e8f5e8; padding: 10px; margin: 10px 0; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Student Transfer</h1>
+    
+    <div class="test-section">
+        <h2>Step 1: Load Current Distribution</h2>
+        <button onclick="loadCurrentDistribution()">Load Current Distribution</button>
+        <div id="currentDistribution" class="current-distribution"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 2: Transfer Student</h2>
+        <input type="text" id="studentId" placeholder="Student ID" value="1">
+        <input type="text" id="fromAdminId" placeholder="From Admin ID" value="kareem@gremo.com">
+        <input type="text" id="toAdminId" placeholder="To Admin ID" value="mtomh92@gremo.com">
+        <button onclick="testTransferStudent()">Transfer Student</button>
+        <div id="transferResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 3: Check Distribution After Transfer</h2>
+        <button onclick="loadCurrentDistribution()">Reload Distribution</button>
+        <div id="afterTransferDistribution" class="current-distribution"></div>
+    </div>
+
+    <script>
+        async function loadCurrentDistribution() {
+            const resultDiv = document.getElementById('currentDistribution');
+            resultDiv.innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=get_student_distribution');
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show distribution with admin names
+                    const distribution = result.data.distribution || result.data;
+                    let displayText = '📊 Current Student Distribution:\n\n';
+                    
+                    for (const [adminName, students] of Object.entries(distribution)) {
+                        displayText += `👤 ${adminName}:\n`;
+                        if (students && students.length > 0) {
+                            students.forEach(student => {
+                                displayText += `  • Student ID: ${student.id} - ${student.fullName}\n`;
+                            });
+                        } else {
+                            displayText += `  • No students assigned\n`;
+                        }
+                        displayText += '\n';
+                    }
+                    
+                    resultDiv.innerHTML = `<pre style="text-align: left; direction: ltr;">${displayText}</pre>`;
+                } else {
+                    resultDiv.innerHTML = `❌ Failed: ${result.message}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+        
+        async function testTransferStudent() {
+            const studentId = document.getElementById('studentId').value;
+            const fromAdminId = document.getElementById('fromAdminId').value;
+            const toAdminId = document.getElementById('toAdminId').value;
+            
+            const resultDiv = document.getElementById('transferResult');
+            resultDiv.innerHTML = 'Transferring...';
+            
+            try {
+                const response = await fetch('backend/api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'transfer_student',
+                        studentId: studentId,
+                        fromAdminId: fromAdminId,
+                        toAdminId: toAdminId
+                    })
+                });
+                
+                const result = await response.json();
+                resultDiv.innerHTML = `
+                    <strong>Status:</strong> ${result.success ? '✅ Success' : '❌ Failed'}<br>
+                    <strong>Message:</strong> ${result.message}<br>
+                    <strong>Response:</strong> ${JSON.stringify(result, null, 2)}
+                `;
+                resultDiv.className = result.success ? 'result success' : 'result error';
+                
+                                 // Reload distribution to see the change
+                 if (result.success) {
+                     setTimeout(() => {
+                         loadCurrentDistribution();
+                         // Also update the after-transfer section
+                         document.getElementById('afterTransferDistribution').innerHTML = 'Loading updated distribution...';
+                         setTimeout(() => {
+                             loadAfterTransferDistribution();
+                         }, 500);
+                     }, 1000);
+                 }
+                
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                resultDiv.className = 'result error';
+            }
+        }
+        
+        async function loadAfterTransferDistribution() {
+            const resultDiv = document.getElementById('afterTransferDistribution');
+            resultDiv.innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=get_student_distribution');
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show distribution with admin names
+                    const distribution = result.data.distribution || result.data;
+                    let displayText = '📊 Distribution After Transfer:\n\n';
+                    
+                    for (const [adminName, students] of Object.entries(distribution)) {
+                        displayText += `👤 ${adminName}:\n`;
+                        if (students && students.length > 0) {
+                            students.forEach(student => {
+                                displayText += `  • Student ID: ${student.id} - ${student.fullName}\n`;
+                            });
+                        } else {
+                            displayText += `  • No students assigned\n`;
+                        }
+                        displayText += '\n';
+                    }
+                    
+                    resultDiv.innerHTML = `<pre style="text-align: left; direction: ltr;">${displayText}</pre>`;
+                } else {
+                    resultDiv.innerHTML = `❌ Failed: ${result.message}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+        
+        // Load distribution on page load
+        loadCurrentDistribution();
+    </script>
+</body>
+</html>

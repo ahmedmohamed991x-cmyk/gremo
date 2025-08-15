@@ -1,0 +1,42 @@
+[
+    {
+        "id": "689e58065f429",
+        "timestamp": "2025-08-14 21:41:26",
+        "action": "student_transfer",
+        "description": "نقل طالب",
+        "details": "تم نقل الطالب يوسف محمد عوض عبدالعاطي هيكل من المشرف 2 إلى المشرف 4",
+        "user": "unknown"
+    },
+    {
+        "id": "689e5820ab88d",
+        "timestamp": "2025-08-14 21:41:52",
+        "action": "student_transfer",
+        "description": "نقل طالب",
+        "details": "تم نقل الطالب يوسف محمد عوض عبدالعاطي هيكل من المشرف 2 إلى المشرف 3",
+        "user": ""
+    },
+    {
+        "id": "689ef50b672b6",
+        "timestamp": "2025-08-15 08:51:23",
+        "action": "student_transfer",
+        "description": "نقل طالب",
+        "details": "تم نقل الطالب زياد محمد محمد سلامة من المشرف 2 إلى المشرف 3",
+        "user": ""
+    },
+    {
+        "id": "689efc41ec9d2",
+        "timestamp": "2025-08-15 09:22:09",
+        "action": "student_transfer",
+        "description": "نقل طالب",
+        "details": "تم نقل الطالب يوسف محمد عوض عبدالعاطي هيكل من المشرف 2 إلى المشرف 4",
+        "user": ""
+    },
+    {
+        "id": "689eff1417eb6",
+        "timestamp": "2025-08-15 09:34:12",
+        "action": "student_transfer",
+        "description": "نقل طالب",
+        "details": "تم نقل الطالب يوسف محمد عوض عبدالعاطي هيكل من المشرف 2 إلى المشرف 4",
+        "user": ""
+    }
+]

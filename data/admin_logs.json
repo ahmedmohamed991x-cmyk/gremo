@@ -1,0 +1,1711 @@
+[
+    {
+        "id": 1755173523840,
+        "type": "file_upload",
+        "action": "رفع ملف",
+        "details": "تم رفع ملف 96328445-e143-48f0-838c-132fa76976ff.pdf للطالب مريم محمد احمد السيد محمد",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:12:03.840Z"
+    },
+    {
+        "id": 1755173525553,
+        "type": "status_change",
+        "action": "تحديث بيانات الطالب",
+        "details": "تم تحديث بيانات الطالب: مريم محمد احمد السيد محمد",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:12:05.553Z"
+    },
+    {
+        "id": 1755174421010,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:27:01.010Z"
+    },
+    {
+        "id": 1755174466249,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:27:46.249Z"
+    },
+    {
+        "id": 1755174475208,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على 1 مشرف",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:27:55.208Z"
+    },
+    {
+        "id": 1755174482868,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على 1 مشرف",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:02.868Z"
+    },
+    {
+        "id": 1755174484781,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:04.781Z"
+    },
+    {
+        "id": 1755174485864,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:05.864Z"
+    },
+    {
+        "id": 1755174509841,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:29.841Z"
+    },
+    {
+        "id": 1755174519521,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على 2 مشرف",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:39.521Z"
+    },
+    {
+        "id": 1755174525014,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب shf من المشرف undefined",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:45.014Z"
+    },
+    {
+        "id": 1755174528391,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:48.391Z"
+    },
+    {
+        "id": 1755174529589,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:28:49.589Z"
+    },
+    {
+        "id": 1755175175689,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف StormBtw",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:39:35.689Z"
+    },
+    {
+        "id": 1755175196847,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:39:56.847Z"
+    },
+    {
+        "id": 1755175200758,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:40:00.758Z"
+    },
+    {
+        "id": 1755175217416,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:40:17.416Z"
+    },
+    {
+        "id": 1755175224299,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:40:24.299Z"
+    },
+    {
+        "id": 1755175461735,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:44:21.735Z"
+    },
+    {
+        "id": 1755175477220,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:44:37.220Z"
+    },
+    {
+        "id": 1755175922248,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:52:02.248Z"
+    },
+    {
+        "id": 1755175925652,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:52:05.652Z"
+    },
+    {
+        "id": 1755175967056,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:52:47.056Z"
+    },
+    {
+        "id": 1755175996332,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T12:53:16.332Z"
+    },
+    {
+        "id": 1755175997097,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T12:53:17.097Z"
+    },
+    {
+        "id": 1755176033563,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:53:53.563Z"
+    },
+    {
+        "id": 1755176038648,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:53:58.648Z"
+    },
+    {
+        "id": 1755176043686,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:54:03.686Z"
+    },
+    {
+        "id": 1755176048018,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب محمود جبالى محمد محمد من المشرف undefined",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:54:08.018Z"
+    },
+    {
+        "id": 1755176050586,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب shf من المشرف undefined",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:54:10.586Z"
+    },
+    {
+        "id": 1755176052681,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:54:12.681Z"
+    },
+    {
+        "id": 1755176054859,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:54:14.859Z"
+    },
+    {
+        "id": 1755176055763,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:54:15.763Z"
+    },
+    {
+        "id": 1755176116442,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T12:55:16.442Z"
+    },
+    {
+        "id": 1755176214857,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T12:56:54.857Z"
+    },
+    {
+        "id": 1755176287549,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T12:58:07.549Z"
+    },
+    {
+        "id": 1755177419395,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 4,
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:16:59.395Z"
+    },
+    {
+        "id": 1755177432976,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T13:17:12.976Z"
+    },
+    {
+        "id": 1755177564203,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:19:24.203Z"
+    },
+    {
+        "id": 1755177623957,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب",
+        "details": "تم توزيع 14 طالب على [object HTMLDivElement] مشرف",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:20:23.957Z"
+    },
+    {
+        "id": 1755177637154,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب الجدد",
+        "details": "تم توزيع 1 طالب جديد تلقائياً",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:20:37.154Z"
+    },
+    {
+        "id": 1755177637266,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:20:37.266Z"
+    },
+    {
+        "id": 1755178530503,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:35:30.503Z"
+    },
+    {
+        "id": 1755178543976,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:35:43.976Z"
+    },
+    {
+        "id": 1755178544003,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:35:44.003Z"
+    },
+    {
+        "id": 1755178545043,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:35:45.043Z"
+    },
+    {
+        "id": 1755178593974,
+        "type": "help_request",
+        "action": "طلب أن يكون مساعداً",
+        "details": "تم طلب أن يكون مساعداً للطالب shf",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:36:33.974Z"
+    },
+    {
+        "id": 1755178618351,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T13:36:58.351Z"
+    },
+    {
+        "id": 1755178627128,
+        "type": "help_request",
+        "action": "طلب أن يكون مساعداً",
+        "details": "تم طلب أن يكون مساعداً للطالب محمود سعيد خلف شاكر محمد",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T13:37:07.128Z"
+    },
+    {
+        "id": 1755178669160,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:37:49.160Z"
+    },
+    {
+        "id": 1755178676244,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:37:56.244Z"
+    },
+    {
+        "id": 1755178679358,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:37:59.358Z"
+    },
+    {
+        "id": 1755178683740,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب أسامه احمد عباس احمد محمد من المشرف undefined",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:38:03.740Z"
+    },
+    {
+        "id": 1755178689182,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T13:38:09.182Z"
+    },
+    {
+        "id": 1755180206410,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:03:26.410Z"
+    },
+    {
+        "id": 1755180211200,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:03:31.200Z"
+    },
+    {
+        "id": 1755180228441,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T14:03:48.441Z"
+    },
+    {
+        "id": 1755180280258,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T14:04:40.258Z"
+    },
+    {
+        "id": 1755180284174,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:04:44.174Z"
+    },
+    {
+        "id": 1755180299292,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: application_filing",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T14:04:59.292Z"
+    },
+    {
+        "id": 1755180332475,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب عبد الحليم ايمن كيلاني محمد شرف - النوع: other",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:05:32.475Z"
+    },
+    {
+        "id": 1755180386103,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:06:26.103Z"
+    },
+    {
+        "id": 1755180495360,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:08:15.360Z"
+    },
+    {
+        "id": 1755180499234,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:08:19.234Z"
+    },
+    {
+        "id": 1755180533491,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:08:53.491Z"
+    },
+    {
+        "id": 1755180533497,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:08:53.497Z"
+    },
+    {
+        "id": 1755180537602,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:08:57.602Z"
+    },
+    {
+        "id": 1755180552024,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب عبد الحليم ايمن كيلاني محمد شرف من المشرف undefined",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:09:12.024Z"
+    },
+    {
+        "id": 1755180555940,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب shf من المشرف undefined",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:09:15.940Z"
+    },
+    {
+        "id": 1755180561852,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:09:21.852Z"
+    },
+    {
+        "id": 1755180565849,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:09:25.849Z"
+    },
+    {
+        "id": 1755180608710,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:08.710Z"
+    },
+    {
+        "id": 1755180608730,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:08.730Z"
+    },
+    {
+        "id": 1755180622074,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:22.074Z"
+    },
+    {
+        "id": 1755180646804,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:46.804Z"
+    },
+    {
+        "id": 1755180646823,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:46.823Z"
+    },
+    {
+        "id": 1755180653096,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:53.096Z"
+    },
+    {
+        "id": 1755180653119,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:53.119Z"
+    },
+    {
+        "id": 1755180654107,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:54.107Z"
+    },
+    {
+        "id": 1755180654135,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:54.135Z"
+    },
+    {
+        "id": 1755180655239,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:55.239Z"
+    },
+    {
+        "id": 1755180655267,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:55.267Z"
+    },
+    {
+        "id": 1755180656639,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:56.639Z"
+    },
+    {
+        "id": 1755180656702,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:56.702Z"
+    },
+    {
+        "id": 1755180658030,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:58.030Z"
+    },
+    {
+        "id": 1755180658052,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:58.052Z"
+    },
+    {
+        "id": 1755180659307,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:59.307Z"
+    },
+    {
+        "id": 1755180659332,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:10:59.332Z"
+    },
+    {
+        "id": 1755180661206,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:01.206Z"
+    },
+    {
+        "id": 1755180661224,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:01.224Z"
+    },
+    {
+        "id": 1755180662507,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:02.507Z"
+    },
+    {
+        "id": 1755180662526,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:02.526Z"
+    },
+    {
+        "id": 1755180663743,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:03.743Z"
+    },
+    {
+        "id": 1755180663768,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:03.768Z"
+    },
+    {
+        "id": 1755180665073,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:05.073Z"
+    },
+    {
+        "id": 1755180665093,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:05.093Z"
+    },
+    {
+        "id": 1755180666189,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:06.189Z"
+    },
+    {
+        "id": 1755180666209,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:06.209Z"
+    },
+    {
+        "id": 1755180667279,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:07.279Z"
+    },
+    {
+        "id": 1755180667305,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:07.305Z"
+    },
+    {
+        "id": 1755180669126,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:09.126Z"
+    },
+    {
+        "id": 1755180669156,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:09.156Z"
+    },
+    {
+        "id": 1755180670209,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:10.209Z"
+    },
+    {
+        "id": 1755180670230,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:10.230Z"
+    },
+    {
+        "id": 1755180671237,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:11.237Z"
+    },
+    {
+        "id": 1755180671255,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:11.255Z"
+    },
+    {
+        "id": 1755180676258,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:16.258Z"
+    },
+    {
+        "id": 1755180676275,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:16.275Z"
+    },
+    {
+        "id": 1755180695274,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:11:35.274Z"
+    },
+    {
+        "id": 1755180916165,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:15:16.165Z"
+    },
+    {
+        "id": 1755180916181,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:15:16.181Z"
+    },
+    {
+        "id": 1755181450612,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:24:10.612Z"
+    },
+    {
+        "id": 1755181453541,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:24:13.541Z"
+    },
+    {
+        "id": 1755181455747,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:24:15.747Z"
+    },
+    {
+        "id": 1755181509544,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:25:09.544Z"
+    },
+    {
+        "id": 1755181511463,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:25:11.463Z"
+    },
+    {
+        "id": 1755181512650,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:25:12.650Z"
+    },
+    {
+        "id": 1755181592225,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: other",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:26:32.225Z"
+    },
+    {
+        "id": 1755181971754,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: application_filing",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:32:51.754Z"
+    },
+    {
+        "id": 1755182007751,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:33:27.751Z"
+    },
+    {
+        "id": 1755182029402,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:33:49.402Z"
+    },
+    {
+        "id": 1755182031164,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:33:51.164Z"
+    },
+    {
+        "id": 1755182032031,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:33:52.031Z"
+    },
+    {
+        "id": 1755182050138,
+        "type": "student_assignment",
+        "action": "إزالة طالب من مشرف",
+        "details": "تم إزالة الطالب shf من المشرف undefined",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:34:10.138Z"
+    },
+    {
+        "id": 1755182051362,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:34:11.362Z"
+    },
+    {
+        "id": 1755182052432,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:34:12.432Z"
+    },
+    {
+        "id": 1755182054328,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:34:14.328Z"
+    },
+    {
+        "id": 1755182163448,
+        "type": "student_assignment",
+        "action": "توزيع تلقائي للطلاب الجدد",
+        "details": "تم توزيع 1 طالب جديد تلقائياً",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:36:03.448Z"
+    },
+    {
+        "id": 1755182163516,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:36:03.516Z"
+    },
+    {
+        "id": 1755182387790,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: application_filing",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:39:47.790Z"
+    },
+    {
+        "id": 1755182839307,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:47:19.307Z"
+    },
+    {
+        "id": 1755182852257,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T14:47:32.257Z"
+    },
+    {
+        "id": 1755182895191,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: document_review",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T14:48:15.191Z"
+    },
+    {
+        "id": 1755182941585,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب يوسف محمد عوض عبدالعاطي هيكل - النوع: file_upload",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T14:49:01.585Z"
+    },
+    {
+        "id": 1755184150434,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: other",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T15:09:10.434Z"
+    },
+    {
+        "id": 1755184883126,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: application_filing",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T15:21:23.126Z"
+    },
+    {
+        "id": 1755186229284,
+        "type": "help_request",
+        "action": "اختبار",
+        "details": "تجربة إضافة سجل",
+        "adminId": 999,
+        "adminName": "tester",
+        "timestamp": "2025-08-14T15:43:49.284Z"
+    },
+    {
+        "id": 1755188883868,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T16:28:03.868Z"
+    },
+    {
+        "id": 1755188890816,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T16:28:10.816Z"
+    },
+    {
+        "id": 1755188895461,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T16:28:15.461Z"
+    },
+    {
+        "id": 1755195013920,
+        "type": "file_upload",
+        "action": "رفع ملف",
+        "details": "تم رفع ملف IMG_20241124_165843 - Maryam Mohamed.jpg للطالب يوسف محمد السيد محمد حسن",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T18:10:13.920Z"
+    },
+    {
+        "id": 1755195021595,
+        "type": "status_change",
+        "action": "تحديث بيانات الطالب",
+        "details": "تم تحديث بيانات الطالب: يوسف محمد السيد محمد حسن",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T18:10:21.595Z"
+    },
+    {
+        "id": 1755196078597,
+        "type": "file_upload",
+        "action": "رفع ملف",
+        "details": "تم رفع ملف Personal Photo.png للطالب مريم محمد احمد السيد محمد",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T18:27:58.597Z"
+    },
+    {
+        "id": 1755196080361,
+        "type": "status_change",
+        "action": "تحديث بيانات الطالب",
+        "details": "تم تحديث بيانات الطالب: مريم محمد احمد السيد محمد",
+        "adminId": 2,
+        "adminName": "kareem@gmail.com",
+        "timestamp": "2025-08-14T18:28:00.361Z"
+    },
+    {
+        "id": 1755196278631,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T18:31:18.631Z"
+    },
+    {
+        "id": 1755196282565,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T18:31:22.565Z"
+    },
+    {
+        "id": 1755196284081,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T18:31:24.081Z"
+    },
+    {
+        "id": 1755196310893,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T18:31:50.893Z"
+    },
+    {
+        "id": 1755197874255,
+        "type": "status_change",
+        "action": "تحديث بيانات الطالب",
+        "details": "تم تحديث بيانات الطالب: مريم محمد احمد السيد محمد",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T18:57:54.255Z"
+    },
+    {
+        "id": 1755199469862,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:24:29.862Z"
+    },
+    {
+        "id": 1755200333792,
+        "type": "file_upload",
+        "action": "رفع ملف",
+        "details": "تم رفع ملف 96328445-e143-48f0-838c-132fa76976ff.pdf للطالب مريم محمد احمد السيد محمد",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:38:53.792Z"
+    },
+    {
+        "id": 1755200335572,
+        "type": "status_change",
+        "action": "تحديث بيانات الطالب",
+        "details": "تم تحديث بيانات الطالب: مريم محمد احمد السيد محمد",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:38:55.572Z"
+    },
+    {
+        "id": 1755200442283,
+        "type": "status_change",
+        "action": "تحديث بيانات الطالب",
+        "details": "تم تحديث بيانات الطالب: مريم محمد احمد السيد محمد",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:40:42.283Z"
+    },
+    {
+        "id": 1755200471374,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:41:11.374Z"
+    },
+    {
+        "id": 1755200473443,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:41:13.443Z"
+    },
+    {
+        "id": 1755200475079,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:41:15.079Z"
+    },
+    {
+        "id": 1755200491422,
+        "type": "student_assignment",
+        "action": "حفظ توزيع الطلاب",
+        "details": "تم حفظ توزيع جديد للطلاب على المشرفين",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:41:31.422Z"
+    },
+    {
+        "id": 1755200526265,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب مريم محمد احمد السيد محمد - النوع: application_filing",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T19:42:06.265Z"
+    },
+    {
+        "id": 1755200536569,
+        "type": "help_request",
+        "action": "إرسال طلب أن يكون مساعداً",
+        "details": "تم إرسال طلب أن يكون مساعداً للطالب shf - النوع: file_upload",
+        "adminId": 3,
+        "adminName": "abdulmalik@gmail.com",
+        "timestamp": "2025-08-14T19:42:16.569Z"
+    },
+    {
+        "id": 1755200543779,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:42:23.779Z"
+    },
+    {
+        "id": 1755201559338,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T19:59:19.338Z"
+    },
+    {
+        "id": 1755201839738,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:03:59.738Z"
+    },
+    {
+        "id": 1755202750088,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:19:10.088Z"
+    },
+    {
+        "id": 1755202849494,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:20:49.494Z"
+    },
+    {
+        "id": 1755203090063,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:24:50.063Z"
+    },
+    {
+        "id": 1755203167905,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:26:07.905Z"
+    },
+    {
+        "id": 1755203692065,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:34:52.065Z"
+    },
+    {
+        "id": 1755204501042,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:48:21.042Z"
+    },
+    {
+        "id": 1755204858969,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:54:18.969Z"
+    },
+    {
+        "id": 1755204861834,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:54:21.834Z"
+    },
+    {
+        "timestamp": "2025-08-14 20:54:25",
+        "action": "student_transfer",
+        "description": "نقل طالب بين المشرفين",
+        "adminId": "system",
+        "details": "تم نقل الطالب shf من المشرف Kareem إلى المشرف عبد الملك"
+    },
+    {
+        "id": 1755204874312,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:54:34.312Z"
+    },
+    {
+        "id": 1755204875396,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:54:35.396Z"
+    },
+    {
+        "id": 1755204878296,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:54:38.296Z"
+    },
+    {
+        "id": 1755204880352,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T20:54:40.352Z"
+    },
+    {
+        "timestamp": "2025-08-14 21:01:45",
+        "action": "owner_created",
+        "description": "إنشاء حساب المالك",
+        "adminId": "system",
+        "details": "تم إنشاء حساب مالك جديد: stormbtw@gremo.com"
+    },
+    {
+        "timestamp": "2025-08-14 21:01:45",
+        "action": "credentials_update",
+        "description": "تحديث بيانات الاعتماد",
+        "adminId": "system",
+        "details": "تم تحديث البريد الإلكتروني من stroogar@gmail.com إلى stormbtw@gremo.com"
+    },
+    {
+        "id": 1755205333185,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stormbtw@gremo.com",
+        "timestamp": "2025-08-14T21:02:13.185Z"
+    },
+    {
+        "timestamp": "2025-08-14 21:02:22",
+        "action": "student_transfer",
+        "description": "نقل طالب بين المشرفين",
+        "adminId": "system",
+        "details": "تم نقل الطالب shf من المشرف Kareem إلى المشرف عبد الملك"
+    },
+    {
+        "timestamp": "2025-08-14 21:13:42",
+        "action": "sheet_id_update",
+        "description": "تحديث Google Sheet ID",
+        "adminId": "system",
+        "details": "تم تحديث Google Sheet ID إلى: xxxx"
+    },
+    {
+        "id": 1755206075135,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف المدير الرئيسي",
+        "adminId": 5,
+        "adminName": "stormbtw@gremo.com",
+        "timestamp": "2025-08-14T21:14:35.135Z"
+    },
+    {
+        "id": 1755207065998,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف المدير الرئيسي",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:31:05.998Z"
+    },
+    {
+        "id": 1755207122145,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:32:02.145Z"
+    },
+    {
+        "id": 1755207550409,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:39:10.409Z"
+    },
+    {
+        "id": 1755207696864,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:41:36.864Z"
+    },
+    {
+        "id": 1755207704819,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:41:44.819Z"
+    },
+    {
+        "id": 1755207716346,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف عبد الملك",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:41:56.346Z"
+    },
+    {
+        "id": 1755207721065,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-14T21:42:01.065Z"
+    },
+    {
+        "id": 1755249719240,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-15T09:21:59.240Z"
+    },
+    {
+        "id": 1755249735340,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف Kareem",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-15T09:22:15.340Z"
+    },
+    {
+        "id": 1755249737143,
+        "type": "admin_view",
+        "action": "عرض تفاصيل المشرف",
+        "details": "تم عرض تفاصيل المشرف محمود",
+        "adminId": "unknown",
+        "adminName": "stroogar@gmail.com",
+        "timestamp": "2025-08-15T09:22:17.143Z"
+    }
+]

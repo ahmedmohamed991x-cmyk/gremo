@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Control Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Access Control Debug Test</h1>
+    
+    <h2>Test 1: Check Distribution File</h2>
+    <button onclick="checkDistributionFile()">Check Distribution File</button>
+    <div id="distResult"></div>
+    
+    <h2>Test 2: Check Admins File</h2>
+    <button onclick="checkAdminsFile()">Check Admins File</button>
+    <div id="adminsResult"></div>
+    
+    <h2>Test 3: Simulate Access Check</h2>
+    <button onclick="simulateAccessCheck()">Simulate Access Check</button>
+    <div id="accessResult"></div>
+    
+    <h2>Test 4: Force Refresh Distribution</h2>
+    <button onclick="forceRefreshDistribution()">Force Refresh Distribution</button>
+    <div id="refreshResult"></div>
+
+    <script>
+        // Check what's actually in the distribution file
+        async function checkDistributionFile() {
+            const result = document.getElementById('distResult');
+            result.innerHTML = 'Checking distribution file...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const distribution = data.distribution;
+                    const admin4Students = distribution['4'] || [];
+                    const admin2Students = distribution['2'] || [];
+                    
+                    result.innerHTML = `
+                        <strong>Distribution File Status:</strong> ✅ Success<br>
+                        <strong>Admin 4 Students:</strong> ${admin4Students.length} students<br>
+                        <strong>Admin 2 Students:</strong> ${admin2Students.length} students<br>
+                        <strong>Admin 4 Student Names:</strong> ${admin4Students.map(s => s.fullName).join(', ')}<br>
+                        <strong>Admin 2 Student Names:</strong> ${admin2Students.map(s => s.fullName).join(', ')}<br>
+                        <strong>Full Distribution:</strong> <pre>${JSON.stringify(distribution, null, 2)}</pre>
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = `<strong>Failed:</strong> ${data.message}`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Check admins file
+        async function checkAdminsFile() {
+            const result = document.getElementById('adminsResult');
+            result.innerHTML = 'Checking admins file...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution_debug');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const admins = data.debug.admins;
+                    const admin4 = admins.find(a => a.id == 4);
+                    const admin2 = admins.find(a => a.id == 2);
+                    
+                    result.innerHTML = `
+                        <strong>Admins File Status:</strong> ✅ Success<br>
+                        <strong>Admin 4:</strong> ${admin4 ? admin4.fullName + ' (' + admin4.email + ')' : 'Not found'}<br>
+                        <strong>Admin 2:</strong> ${admin2 ? admin2.fullName + ' (' + admin2.email + ')' : 'Not found'}<br>
+                        <strong>All Admin IDs:</strong> ${data.debug.adminIds.join(', ')}<br>
+                        <strong>All Admin Emails:</strong> ${data.debug.adminEmails.join(', ')}<br>
+                        <strong>Full Admins Data:</strong> <pre>${JSON.stringify(admins, null, 2)}</pre>
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = `<strong>Failed:</strong> ${data.message}`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Simulate the access check logic
+        async function simulateAccessCheck() {
+            const result = document.getElementById('accessResult');
+            result.innerHTML = 'Simulating access check...';
+            
+            try {
+                // Get current distribution
+                const distResponse = await fetch('backend/api.php?action=test_distribution');
+                const distData = await distResponse.json();
+                
+                if (!distData.success) {
+                    result.innerHTML = 'Failed to get distribution data';
+                    result.className = 'result error';
+                    return;
+                }
+                
+                const distribution = distData.distribution;
+                
+                // Simulate checking access for student 4 (يوسف محمد عوض عبدالعاطي هيكل)
+                const studentId = 4;
+                const studentName = 'يوسف محمد عوض عبدالعاطي هيكل';
+                
+                // Check if student is in admin 4's list
+                const admin4Students = distribution['4'] || [];
+                const admin2Students = distribution['2'] || [];
+                
+                const inAdmin4 = admin4Students.some(s => String(s.id) === String(studentId));
+                const inAdmin2 = admin2Students.some(s => String(s.id) === String(studentId));
+                
+                result.innerHTML = `
+                    <strong>Access Check Simulation:</strong><br>
+                    <strong>Student:</strong> ${studentName} (ID: ${studentId})<br>
+                    <strong>In Admin 4 List:</strong> ${inAdmin4 ? '✅ YES' : '❌ NO'}<br>
+                    <strong>In Admin 2 List:</strong> ${inAdmin2 ? '✅ YES' : '❌ NO'}<br>
+                    <strong>Admin 4 Students:</strong> ${admin4Students.map(s => s.fullName).join(', ')}<br>
+                    <strong>Admin 2 Students:</strong> ${admin2Students.map(s => s.fullName).join(', ')}<br>
+                    <strong>Expected Result:</strong> ${inAdmin4 ? 'Should have access' : 'Should NOT have access'}<br>
+                    <strong>Issue:</strong> ${inAdmin4 && inAdmin2 ? 'Student appears in BOTH lists!' : inAdmin4 ? 'Student only in Admin 4 (correct)' : 'Student not in Admin 4 (wrong)'}
+                `;
+                
+                if (inAdmin4 && inAdmin2) {
+                    result.className = 'result warning';
+                } else if (inAdmin4) {
+                    result.className = 'result success';
+                } else {
+                    result.className = 'result error';
+                }
+                
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Force refresh distribution
+        async function forceRefreshDistribution() {
+            const result = document.getElementById('refreshResult');
+            result.innerHTML = 'Forcing distribution refresh...';
+            
+            try {
+                // This would normally be called from the main site
+                // For now, just show what should happen
+                result.innerHTML = `
+                    <strong>Distribution Refresh:</strong><br>
+                    <strong>What should happen:</strong><br>
+                    1. Call loadStudentDistributionFromAPI()<br>
+                    2. Update studentDistribution variable<br>
+                    3. Call applyGlobalAccessControl()<br>
+                    4. Re-evaluate all student access<br>
+                    <br>
+                    <strong>Current Issue:</strong> The frontend studentDistribution variable might be stale<br>
+                    <strong>Solution:</strong> Need to ensure distribution is refreshed after transfer
+                `;
+                result.className = 'result warning';
+                
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+    </script>
+</body>
+</html>

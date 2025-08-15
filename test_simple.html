@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test</title>
+</head>
+<body>
+    <h1>Simple Test</h1>
+    
+    <h2>Test 1: Scan Files</h2>
+    <button onclick="testScan()">Test Scan Files</button>
+    <div id="scanResult"></div>
+    
+    <h2>Test 2: Check Distribution</h2>
+    <button onclick="checkDistribution()">Check Distribution</button>
+    <div id="distResult"></div>
+    
+    <h2>Test 3: Transfer Student</h2>
+    <button onclick="transferStudent()">Transfer Student 1 from Admin 2 to Admin 4</button>
+    <div id="transferResult"></div>
+
+    <script>
+        async function testScan() {
+            const result = document.getElementById('scanResult');
+            result.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=scan_student_files&studentId=2');
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+            }
+        }
+        
+        async function checkDistribution() {
+            const result = document.getElementById('distResult');
+            result.innerHTML = 'Checking...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+            }
+        }
+        
+        async function transferStudent() {
+            const result = document.getElementById('transferResult');
+            result.innerHTML = 'Transferring...';
+            
+            try {
+                const response = await fetch('backend/api.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        action: 'transfer_student',
+                        studentId: 1,
+                        fromAdminId: 2,
+                        toAdminId: 4
+                    })
+                });
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                
+                // Check distribution after transfer
+                setTimeout(checkDistribution, 1000);
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+            }
+        }
+        
+        // Auto-check distribution on load
+        checkDistribution();
+    </script>
+</body>
+</html>

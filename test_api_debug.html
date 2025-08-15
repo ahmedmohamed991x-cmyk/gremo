@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Debug Test</title>
+</head>
+<body>
+    <h1>🔍 API Debug Test</h1>
+    
+    <h2>Test 1: Raw API Response</h2>
+    <button onclick="testRawResponse()">Test Raw Response</button>
+    <div id="rawResult"></div>
+    
+    <h2>Test 2: Check Response Headers</h2>
+    <button onclick="testResponseHeaders()">Test Response Headers</button>
+    <div id="headersResult"></div>
+
+    <script>
+        async function testRawResponse() {
+            const result = document.getElementById('rawResult');
+            result.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=scan_student_files&studentId=4');
+                const rawText = await response.text();
+                result.innerHTML = `<pre>Status: ${response.status}
+Headers: ${JSON.stringify([...response.headers.entries()], null, 2)}
+Raw Response: ${rawText}</pre>`;
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+            }
+        }
+        
+        async function testResponseHeaders() {
+            const result = document.getElementById('headersResult');
+            result.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=scan_student_files&studentId=4');
+                const headers = {};
+                response.headers.forEach((value, key) => {
+                    headers[key] = value;
+                });
+                result.innerHTML = `<pre>Status: ${response.status}
+Headers: ${JSON.stringify(headers, null, 2)}</pre>`;
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

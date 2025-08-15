@@ -1,0 +1,29 @@
+[
+    {
+        "fullName": "Kareem",
+        "email": "kareem@gremo.com",
+        "password": "$2y$12$.2HeJ0.BJgHbaUn4F1i7DuWmRZfXdveASjhl2vc..FgJhLTtyRWkS",
+        "role": "مدير",
+        "id": 2,
+        "createdAt": "2025-08-12",
+        "isMainAdmin": false
+    },
+    {
+        "fullName": "عبد الملك",
+        "email": "abdulmalik@gremo.com",
+        "password": "$2y$12$8g1BSa9A3PHPGlnNc5uNz.WIcRGYebZ0xtt3NYBW8Xdl47c.Cy6d6",
+        "role": "مدير",
+        "id": 3,
+        "createdAt": "2025-08-14",
+        "isMainAdmin": false
+    },
+    {
+        "fullName": "محمود",
+        "email": "mtomh92@gremo.com",
+        "password": "$2y$12$YsrVf.yQJlseC1jHXPbaDOspZlSez8zxXuU7BZJJP8QGnRTOIB2cW",
+        "role": "مدير",
+        "id": 4,
+        "createdAt": "2025-08-14",
+        "isMainAdmin": false
+    }
+]

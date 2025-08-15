@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real Test - Main Site Functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Real Test - Main Site Functions</h1>
+    
+    <h2>Test 1: Scan Files for Student 4 (يوسف محمد عوض عبدالعاطي هيكل)</h2>
+    <button onclick="testScanStudent4()">Test Scan Files for Student 4</button>
+    <div id="scanResult"></div>
+    
+    <h2>Test 2: Check Current Distribution</h2>
+    <button onclick="checkDistribution()">Check Distribution</button>
+    <div id="distResult"></div>
+    
+    <h2>Test 3: Transfer Student 4 from Admin 2 to Admin 4</h2>
+    <button onclick="transferStudent4()">Transfer Student 4</button>
+    <div id="transferResult"></div>
+    
+    <h2>Test 4: Check Distribution After Transfer</h2>
+    <button onclick="checkDistributionAfter()">Check Distribution After</button>
+    <div id="distAfterResult"></div>
+
+    <script>
+        async function testScanStudent4() {
+            const result = document.getElementById('scanResult');
+            result.innerHTML = 'Testing scan for student 4...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=scan_student_files&studentId=4');
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                result.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        async function checkDistribution() {
+            const result = document.getElementById('distResult');
+            result.innerHTML = 'Checking distribution...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                result.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        async function transferStudent4() {
+            const result = document.getElementById('transferResult');
+            result.innerHTML = 'Transferring student 4...';
+            
+            try {
+                const response = await fetch('backend/api.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        action: 'transfer_student',
+                        studentId: 4,
+                        fromAdminId: 2,
+                        toAdminId: 4
+                    })
+                });
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                result.className = data.success ? 'result success' : 'result error';
+                
+                // Check distribution after transfer
+                setTimeout(checkDistributionAfter, 1000);
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        async function checkDistributionAfter() {
+            const result = document.getElementById('distAfterResult');
+            result.innerHTML = 'Checking distribution after transfer...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                result.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                result.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Auto-check distribution on load
+        checkDistribution();
+    </script>
+</body>
+</html>

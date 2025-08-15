@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Control Fix Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Access Control Fix Test</h1>
+    
+    <h2>Step 1: Check Current Distribution</h2>
+    <button onclick="checkDistribution()">Check Distribution</button>
+    <div id="distResult"></div>
+    
+    <h2>Step 2: Force Refresh Distribution</h2>
+    <button onclick="forceRefresh()">Force Refresh Distribution</button>
+    <div id="refreshResult"></div>
+    
+    <h2>Step 3: Test Access Control</h2>
+    <button onclick="testAccess()">Test Access Control</button>
+    <div id="accessResult"></div>
+    
+    <h2>Step 4: Manual Fix</h2>
+    <button onclick="manualFix()">Manual Fix</button>
+    <div id="fixResult"></div>
+    
+    <h2>Step 5: Load Script.js and Test</h2>
+    <button onclick="loadScriptAndTest()">Load Script.js and Test</button>
+    <div id="scriptResult"></div>
+    
+    <h2>Step 6: Debug Access Control</h2>
+    <button onclick="debugAccessControl()">Debug Access Control</button>
+    <button onclick="comprehensiveDataCheck()">Comprehensive Data Check</button>
+    <button onclick="testWithUserContext()">Test with User Context</button>
+    <button onclick="loadAllDataAndTest()">Load All Data & Test</button>
+    <button onclick="simpleAccessTest()">Simple Direct Access Test</button>
+    <button onclick="createWorkingAccessControl()">Create Working Access Control</button>
+    <div id="debugResult"></div>
+
+    <script>
+        // Check current distribution
+        async function checkDistribution() {
+            const result = document.getElementById('distResult');
+            result.innerHTML = 'Checking distribution...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const distribution = data.distribution;
+                    const admin4Students = distribution['4'] || [];
+                    const admin2Students = distribution['2'] || [];
+                    
+                    result.innerHTML = `
+                        <strong>Current Distribution:</strong><br>
+                        <strong>Admin 4 Students:</strong> ${admin4Students.length} students<br>
+                        <strong>Admin 2 Students:</strong> ${admin2Students.length} students<br>
+                        <strong>Admin 4 Student Names:</strong> ${admin4Students.map(s => s.fullName).join(', ')}<br>
+                        <strong>Admin 2 Student Names:</strong> ${admin2Students.map(s => s.fullName).join(', ')}<br>
+                        <strong>Student 4 Status:</strong> ${admin4Students.some(s => s.id == 4) ? '✅ In Admin 4' : '❌ NOT in Admin 4'}<br>
+                        <strong>Student 4 Status:</strong> ${admin2Students.some(s => s.id == 4) ? '✅ In Admin 2' : '❌ NOT in Admin 2'}<br>
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = `<strong>Failed:</strong> ${data.message}`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Force refresh distribution
+        async function forceRefresh() {
+            const result = document.getElementById('refreshResult');
+            result.innerHTML = 'Forcing refresh...';
+            
+            try {
+                // Call the function from script.js
+                if (typeof window.loadStudentDistributionFromAPI === 'function') {
+                    await window.loadStudentDistributionFromAPI();
+                    result.innerHTML = `
+                        <strong>Distribution Refreshed:</strong> ✅<br>
+                        <strong>Next:</strong> Click "Test Access Control" to verify
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = '<strong>Error:</strong> Function not found. Make sure script.js is loaded.';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Test access control
+        async function testAccess() {
+            const result = document.getElementById('accessResult');
+            result.innerHTML = 'Testing access control...';
+            
+            try {
+                if (typeof window.canAccessStudent === 'function') {
+                    // Simulate checking access for student 4
+                    const hasAccess = window.canAccessStudent(4);
+                    
+                    result.innerHTML = `
+                        <strong>Access Control Test:</strong><br>
+                        <strong>Student 4 Access:</strong> ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br>
+                        <strong>Expected:</strong> Should be GRANTED if in distribution<br>
+                        <strong>Issue:</strong> ${hasAccess ? 'None - working correctly' : 'Access denied despite being in distribution'}
+                    `;
+                    result.className = hasAccess ? 'result success' : 'result error';
+                } else {
+                    result.innerHTML = '<strong>Error:</strong> Function not found. Make sure script.js is loaded.';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Manual fix
+        async function manualFix() {
+            const result = document.getElementById('fixResult');
+            result.innerHTML = 'Applying manual fix...';
+            
+            try {
+                // Get fresh distribution from API
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Update the global studentDistribution variable
+                    if (typeof window.studentDistribution !== 'undefined') {
+                        window.studentDistribution = data.distribution;
+                        console.log('✅ Updated studentDistribution:', window.studentDistribution);
+                        
+                        // Apply access control
+                        if (typeof window.applyGlobalAccessControl === 'function') {
+                            window.applyGlobalAccessControl();
+                            console.log('✅ Applied global access control');
+                        }
+                        
+                        result.innerHTML = `
+                            <strong>Manual Fix Applied:</strong> ✅<br>
+                            <strong>Distribution Updated:</strong> ${Object.keys(data.distribution).length} admins<br>
+                            <strong>Access Control Applied:</strong> ✅<br>
+                            <strong>Next:</strong> Check the main site - student should now be accessible
+                        `;
+                        result.className = 'result success';
+                    } else {
+                        result.innerHTML = '<strong>Error:</strong> studentDistribution variable not found. Make sure script.js is loaded.';
+                        result.className = 'result error';
+                    }
+                } else {
+                    result.innerHTML = `<strong>Failed:</strong> ${data.message}`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+
+        // Load script.js first
+        function loadScript() {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'script.js';
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error('Failed to load script.js'));
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Load script.js and test access control
+        async function loadScriptAndTest() {
+            const result = document.getElementById('scriptResult');
+            result.innerHTML = 'Loading script.js...';
+            
+            try {
+                // Load script.js
+                await loadScript();
+                result.innerHTML = 'Script loaded, waiting for functions...';
+                
+                // Wait a bit for functions to be available
+                setTimeout(async () => {
+                    if (typeof window.loadStudentDistributionFromAPI === 'function') {
+                        result.innerHTML = '✅ Script loaded successfully! Functions available.<br><br>Now testing access control...';
+                        
+                        // Test access control
+                        try {
+                            await window.loadStudentDistributionFromAPI();
+                            const hasAccess = window.canAccessStudent(4);
+                            
+                            result.innerHTML = `
+                                <strong>Script Loaded:</strong> ✅<br>
+                                <strong>Distribution Refreshed:</strong> ✅<br>
+                                <strong>Student 4 Access:</strong> ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br>
+                                <strong>Status:</strong> ${hasAccess ? 'Working correctly!' : 'Still has issue'}
+                            `;
+                            result.className = hasAccess ? 'result success' : 'result warning';
+                            
+                        } catch (error) {
+                            result.innerHTML = `<strong>Access Test Error:</strong> ${error.message}`;
+                            result.className = 'result error';
+                        }
+                    } else {
+                        result.innerHTML = '❌ Script loaded but functions still not available. Check console for errors.';
+                        result.className = 'result error';
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                result.innerHTML = `<strong>Script Loading Error:</strong> ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+
+        // Debug access control
+        async function debugAccessControl() {
+            const result = document.getElementById('debugResult');
+            result.innerHTML = 'Simulating access control...';
+
+            try {
+                if (typeof window.canAccessStudent === 'function') {
+                    // Simulate a real user context, e.g., student 4
+                    const studentId = 4;
+                    const hasAccess = window.canAccessStudent(studentId);
+
+                    result.innerHTML = `
+                        <strong>Debug Access Control:</strong><br>
+                        <strong>Simulating Student ID:</strong> ${studentId}<br>
+                        <strong>Access Result:</strong> ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br>
+                        <strong>Expected:</strong> Should be GRANTED if in distribution<br>
+                        <strong>Issue:</strong> ${hasAccess ? 'None - working correctly' : 'Access denied despite being in distribution'}
+                    `;
+                    result.className = hasAccess ? 'result success' : 'result error';
+                } else {
+                    result.innerHTML = '<strong>Error:</strong> Function not found. Make sure script.js is loaded.';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Comprehensive data check
+        async function comprehensiveDataCheck() {
+            const result = document.getElementById('debugResult');
+            result.innerHTML = 'Performing comprehensive data check...';
+
+            try {
+                // Get distribution data
+                const distResponse = await fetch('backend/api.php?action=test_distribution');
+                const distData = await distResponse.json();
+                
+                // Get admins data
+                const adminsResponse = await fetch('backend/api.php?action=test_distribution_debug');
+                const adminsData = await adminsResponse.json();
+                
+                if (distData.success && adminsData.success) {
+                    const distribution = distData.distribution;
+                    const admins = adminsData.debug.admins;
+                    
+                    // Check admin 4 specifically
+                    const admin4 = admins.find(a => a.id == 4);
+                    const admin4Students = distribution['4'] || [];
+                    const student4 = admin4Students.find(s => s.id == 4);
+                    
+                    result.innerHTML = `
+                        <strong>Comprehensive Data Check:</strong><br><br>
+                        
+                        <strong>Admin 4 Info:</strong><br>
+                        - ID: ${admin4 ? admin4.id : 'Not found'} (Type: ${admin4 ? typeof admin4.id : 'N/A'})<br>
+                        - Name: ${admin4 ? admin4.fullName : 'Not found'}<br>
+                        - Email: ${admin4 ? admin4.email : 'Not found'}<br><br>
+                        
+                        <strong>Distribution for Admin 4:</strong><br>
+                        - Key: '4' (Type: ${typeof '4'})<br>
+                        - Students Count: ${admin4Students.length}<br>
+                        - Student 4 Found: ${student4 ? '✅ YES' : '❌ NO'}<br>
+                        - Student 4 Details: ${student4 ? `${student4.id} (${student4.fullName})` : 'Not found'}<br><br>
+                        
+                        <strong>All Distribution Keys:</strong><br>
+                        - Keys: ${Object.keys(distribution).join(', ')}<br>
+                        - Key Types: ${Object.keys(distribution).map(k => typeof k).join(', ')}<br><br>
+                        
+                        <strong>All Admin IDs:</strong><br>
+                        - IDs: ${admins.map(a => a.id).join(', ')}<br>
+                        - ID Types: ${admins.map(a => typeof a.id).join(', ')}
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = 'Failed to get data for comprehensive check';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Test with simulated user context
+        async function testWithUserContext() {
+            const result = document.getElementById('debugResult');
+            result.innerHTML = 'Testing with simulated user context...';
+
+            try {
+                if (typeof window.canAccessStudent === 'function' && typeof window.admins !== 'undefined') {
+                    // Simulate admin 4 user context
+                    const admin4 = window.admins.find(a => a.id == 4);
+                    if (admin4) {
+                        // Temporarily set currentUser to simulate admin 4
+                        const originalCurrentUser = window.currentUser;
+                        window.currentUser = {
+                            id: admin4.id,
+                            username: admin4.email,
+                            role: admin4.isMainAdmin ? 'manager' : 'admin',
+                            isMainAdmin: admin4.isMainAdmin
+                        };
+                        
+                        console.log('🔍 Simulated currentUser:', window.currentUser);
+                        
+                        // Test access control
+                        const hasAccess = window.canAccessStudent(4);
+                        
+                        // Restore original currentUser
+                        window.currentUser = originalCurrentUser;
+                        
+                        result.innerHTML = `
+                            <strong>Test with User Context:</strong><br>
+                            <strong>Simulated User:</strong> ${admin4.fullName} (${admin4.email})<br>
+                            <strong>Student 4 Access:</strong> ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br>
+                            <strong>Expected:</strong> Should be GRANTED if in distribution<br>
+                            <strong>Status:</strong> ${hasAccess ? 'Working correctly!' : 'Still has issue'}
+                        `;
+                        result.className = hasAccess ? 'result success' : 'result warning';
+                    } else {
+                        result.innerHTML = 'Admin 4 not found in admins array';
+                        result.className = 'result error';
+                    }
+                } else {
+                    result.innerHTML = 'Required functions or data not available';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Load all data and set up context
+        async function loadAllDataAndTest() {
+            const result = document.getElementById('debugResult');
+            result.innerHTML = 'Loading all data and setting up context...';
+
+            try {
+                // Step 1: Load distribution data
+                const distResponse = await fetch('backend/api.php?action=test_distribution');
+                const distData = await distResponse.json();
+                
+                // Step 2: Load admins data
+                const adminsResponse = await fetch('backend/api.php?action=test_distribution_debug');
+                const adminsData = await adminsResponse.json();
+                
+                if (distData.success && adminsData.success) {
+                    // Step 3: Set up the data in the global variables
+                    if (typeof window.studentDistribution !== 'undefined') {
+                        window.studentDistribution = distData.distribution;
+                        console.log('✅ Set studentDistribution:', window.studentDistribution);
+                    }
+                    
+                    if (typeof window.admins !== 'undefined') {
+                        window.admins = adminsData.debug.admins;
+                        console.log('✅ Set admins:', window.admins);
+                    }
+                    
+                    // Step 4: Simulate admin 4 user context
+                    const admin4 = adminsData.debug.admins.find(a => a.id == 4);
+                    if (admin4) {
+                        // Set currentUser to simulate admin 4
+                        window.currentUser = {
+                            id: admin4.id,
+                            username: admin4.email,
+                            role: admin4.isMainAdmin ? 'manager' : 'admin',
+                            isMainAdmin: admin4.isMainAdmin
+                        };
+                        
+                        console.log('🔍 Set currentUser:', window.currentUser);
+                        
+                        // Step 5: Debug the access control step by step
+                        if (typeof window.canAccessStudent === 'function') {
+                            console.log('🔍 Starting access control debug...');
+                            console.log('🔍 Current user:', window.currentUser);
+                            console.log('🔍 Student distribution:', window.studentDistribution);
+                            console.log('🔍 Available distribution keys:', Object.keys(window.studentDistribution || {}));
+                            
+                            // Test access control
+                            const hasAccess = window.canAccessStudent(4);
+                            
+                            result.innerHTML = `
+                                <strong>Complete Test with Loaded Data:</strong><br>
+                                <strong>Distribution Loaded:</strong> ✅ (${Object.keys(distData.distribution).length} admins)<br>
+                                <strong>Admins Loaded:</strong> ✅ (${adminsData.debug.admins.length} admins)<br>
+                                <strong>User Context:</strong> ✅ ${admin4.fullName} (${admin4.email})<br>
+                                <strong>Student 4 Access:</strong> ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br>
+                                <strong>Expected:</strong> Should be GRANTED if in distribution<br>
+                                <strong>Status:</strong> ${hasAccess ? 'Working correctly!' : 'Still has issue'}<br><br>
+                                <strong>Debug Info:</strong><br>
+                                - Admin 4 ID: ${admin4.id} (Type: ${typeof admin4.id})<br>
+                                - Distribution Key '4': ${window.studentDistribution['4'] ? 'Exists' : 'Missing'}<br>
+                                - Students in Admin 4: ${window.studentDistribution['4'] ? window.studentDistribution['4'].length : 0}<br>
+                                - Student 4 in Admin 4: ${window.studentDistribution['4'] ? window.studentDistribution['4'].some(s => s.id == 4) : 'No data'}
+                            `;
+                            result.className = hasAccess ? 'result success' : 'result warning';
+                        } else {
+                            result.innerHTML = 'canAccessStudent function not available';
+                            result.className = 'result error';
+                        }
+                    } else {
+                        result.innerHTML = 'Admin 4 not found';
+                        result.className = 'result error';
+                    }
+                } else {
+                    result.innerHTML = 'Failed to load data';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+
+        // Create a working access control function
+        function createWorkingAccessControl() {
+            const result = document.getElementById('debugResult');
+            result.innerHTML = 'Creating working access control function...';
+
+            try {
+                // Create a simple, working access control function
+                window.workingCanAccessStudent = function(studentId) {
+                    console.log('🔧 Working access control called for student:', studentId);
+                    console.log('🔧 Current user:', window.currentUser);
+                    console.log('🔧 Student distribution:', window.studentDistribution);
+                    
+                    // Check if we have the required data
+                    if (!window.currentUser || !window.studentDistribution) {
+                        console.log('❌ Missing required data');
+                        return false;
+                    }
+                    
+                    // Find admin by email
+                    const admin = window.admins.find(a => a.email === window.currentUser.username);
+                    if (!admin) {
+                        console.log('❌ Admin not found for user:', window.currentUser.username);
+                        return false;
+                    }
+                    
+                    console.log('🔧 Admin found:', admin);
+                    console.log('🔧 Admin ID:', admin.id, 'Type:', typeof admin.id);
+                    
+                    // Convert admin ID to string for distribution lookup
+                    const adminIdString = String(admin.id);
+                    console.log('🔧 Admin ID as string:', adminIdString);
+                    
+                    // Check if admin has students in distribution
+                    if (!window.studentDistribution[adminIdString]) {
+                        console.log('❌ No students found for admin ID:', adminIdString);
+                        return false;
+                    }
+                    
+                    const adminStudents = window.studentDistribution[adminIdString];
+                    console.log('🔧 Students for this admin:', adminStudents);
+                    
+                    // Check if student is in admin's list
+                    const hasAccess = adminStudents.some(s => String(s.id) === String(studentId));
+                    console.log('🔧 Access result:', hasAccess);
+                    
+                    return hasAccess;
+                };
+                
+                // Test the working function
+                if (window.currentUser && window.studentDistribution && window.admins) {
+                    const hasAccess = window.workingCanAccessStudent(4);
+                    
+                    result.innerHTML = `
+                        <strong>Working Access Control Created:</strong> ✅<br><br>
+                        <strong>Test Result:</strong><br>
+                        - Student 4 Access: ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br>
+                        - Expected: Should be GRANTED if in distribution<br>
+                        - Status: ${hasAccess ? 'Working correctly!' : 'Still has issue'}<br><br>
+                        <strong>Function Details:</strong><br>
+                        - Function Name: workingCanAccessStudent<br>
+                        - Logic: Simple, direct lookup in distribution<br>
+                        - Bypasses: Complex broken logic in original function<br><br>
+                        <strong>Next Step:</strong> Use this function in the main site!
+                    `;
+                    result.className = hasAccess ? 'result success' : 'result warning';
+                    
+                    if (hasAccess) {
+                        console.log('🎉 WORKING ACCESS CONTROL SUCCESS!');
+                        console.log('🎉 Student 4 access granted by working function');
+                        console.log('🎉 This proves the fix works!');
+                    }
+                } else {
+                    result.innerHTML = 'Required data not available for testing';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Simple direct access test
+        async function simpleAccessTest() {
+            const result = document.getElementById('debugResult');
+            result.innerHTML = 'Performing simple direct access test...';
+
+            try {
+                // Get fresh data
+                const distResponse = await fetch('backend/api.php?action=test_distribution');
+                const distData = await distResponse.json();
+                
+                if (distData.success) {
+                    const distribution = distData.distribution;
+                    const admin4Students = distribution['4'] || [];
+                    const student4 = admin4Students.find(s => s.id == 4);
+                    
+                    // Simple logic: if student 4 is in admin 4's list, grant access
+                    const hasAccess = student4 !== undefined;
+                    
+                    result.innerHTML = `
+                        <strong>Simple Direct Access Test:</strong><br><br>
+                        <strong>Raw Distribution Data:</strong><br>
+                        - Admin 4 Key: '4'<br>
+                        - Admin 4 Students: ${admin4Students.length}<br>
+                        - Student 4 Found: ${student4 ? '✅ YES' : '❌ NO'}<br>
+                        - Student 4 Details: ${student4 ? `${student4.id} (${student4.fullName})` : 'Not found'}<br><br>
+                        <strong>Simple Access Logic:</strong><br>
+                        - Student 4 in Admin 4 list: ${hasAccess ? '✅ YES' : '❌ NO'}<br>
+                        - Access Result: ${hasAccess ? '✅ GRANTED' : '❌ DENIED'}<br><br>
+                        <strong>Expected:</strong> Should be GRANTED since student 4 is in admin 4's list<br>
+                        <strong>Status:</strong> ${hasAccess ? 'Working correctly!' : 'Issue found in data'}
+                    `;
+                    result.className = hasAccess ? 'result success' : 'result error';
+                    
+                    // If access is granted, this proves the data is correct
+                    if (hasAccess) {
+                        console.log('✅ SIMPLE TEST PASSED: Student 4 is in Admin 4 list');
+                        console.log('✅ This proves the data structure is correct');
+                        console.log('✅ The issue must be in the canAccessStudent function logic');
+                    }
+                } else {
+                    result.innerHTML = 'Failed to get distribution data';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+    </script>
+</body>
+</html>

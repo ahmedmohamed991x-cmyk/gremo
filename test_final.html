@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Test - File Operations + Access Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Final Test - File Operations + Access Control</h1>
+    
+    <h2>Test 1: File Operations</h2>
+    <button onclick="testFileOperations()">Test File Operations</button>
+    <div id="fileResult"></div>
+    
+    <h2>Test 2: Access Control Debug</h2>
+    <button onclick="testAccessControl()">Test Access Control</button>
+    <div id="accessResult"></div>
+    
+    <h2>Test 3: Transfer + Access Check</h2>
+    <button onclick="testTransferAndAccess()">Test Transfer + Access</button>
+    <div id="transferResult"></div>
+
+    <script>
+        async function testFileOperations() {
+            const result = document.getElementById('fileResult');
+            result.innerHTML = 'Testing file operations...';
+            
+            try {
+                // Test 1: Scan files
+                const scanResponse = await fetch('backend/api.php?action=scan_student_files&studentId=4');
+                const scanResult = await scanResponse.json();
+                
+                if (scanResult.success && scanResult.files.length > 0) {
+                    const fileName = scanResult.files[0].name;
+                    
+                    // Test 2: Try to delete the file
+                    const deleteResponse = await fetch('backend/api.php', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            action: 'delete_file',
+                            studentId: 4,
+                            fileName: fileName
+                        })
+                    });
+                    
+                    const deleteResult = await deleteResponse.json();
+                    
+                    result.innerHTML = `
+                        <strong>Scan Result:</strong> ${scanResult.success ? '✅ Success' : '❌ Failed'}<br>
+                        <strong>Files Found:</strong> ${scanResult.files.length}<br>
+                        <strong>Delete Test:</strong> ${deleteResult.success ? '✅ Success' : '❌ Failed'}<br>
+                        <strong>Delete Message:</strong> ${deleteResult.message}<br>
+                        <strong>Full Response:</strong> <pre>${JSON.stringify(deleteResult, null, 2)}</pre>
+                    `;
+                    result.className = deleteResult.success ? 'result success' : 'result error';
+                } else {
+                    result.innerHTML = `<strong>Scan Failed:</strong> ${scanResult.message}`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        async function testAccessControl() {
+            const result = document.getElementById('accessResult');
+            result.innerHTML = 'Testing access control...';
+            
+            try {
+                // Check current distribution
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                
+                result.innerHTML = `
+                    <strong>Distribution Status:</strong> ${data.success ? '✅ Success' : '❌ Failed'}<br>
+                    <strong>Distribution Data:</strong> <pre>${JSON.stringify(data.distribution, null, 2)}</pre>
+                `;
+                result.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        async function testTransferAndAccess() {
+            const result = document.getElementById('transferResult');
+            result.innerHTML = 'Testing transfer and access...';
+            
+            try {
+                // Step 1: Transfer student 4 from admin 2 to admin 4
+                const transferResponse = await fetch('backend/api.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        action: 'transfer_student',
+                        studentId: 4,
+                        fromAdminId: 2,
+                        toAdminId: 4
+                    })
+                });
+                
+                const transferResult = await transferResponse.json();
+                
+                if (transferResult.success) {
+                    // Step 2: Check distribution after transfer
+                    setTimeout(async () => {
+                        const distResponse = await fetch('backend/api.php?action=test_distribution');
+                        const distData = await distResponse.json();
+                        
+                        result.innerHTML = `
+                            <strong>Transfer Status:</strong> ${transferResult.success ? '✅ Success' : '❌ Failed'}<br>
+                            <strong>Transfer Message:</strong> ${transferResult.message}<br>
+                            <strong>Distribution After Transfer:</strong> <pre>${JSON.stringify(distData.distribution, null, 2)}</pre>
+                        `;
+                        result.className = 'result success';
+                    }, 1000);
+                } else {
+                    result.innerHTML = `<strong>Transfer Failed:</strong> ${transferResult.message}`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+    </script>
+</body>
+</html>

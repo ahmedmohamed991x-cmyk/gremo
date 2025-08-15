@@ -1,0 +1,164 @@
+# Protect website files and directories
+# Deny access to sensitive files and directories
+
+# Block access to data files
+<Files "*.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to PHP files in data directory
+<Files "data/*.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+# Block access to PHP files in data directory
+<Files "data/*.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to configuration files
+<Files "*.env">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "config/*.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to backup directories
+<Directory "files/backup_*">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+# Block access to student files (only allow through PHP scripts)
+<Directory "files/students">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+# Block access to cleanup and utility scripts
+<Files "cleanup_*.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to .htaccess itself
+<Files ".htaccess">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to README and documentation files
+<Files "*.md">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to log files
+<Files "*.log">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to temporary files
+<Files "*.tmp">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to cache files
+<Files "*.cache">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to backup files
+<Files "*.bak">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to old files
+<Files "*.old">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to system files
+<Files ".DS_Store">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "Thumbs.db">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Block access to source code files
+<Files "*.js">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "*.css">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Allow access only to main HTML file and API endpoints
+<Files "index.html">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files "backend/api.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files "api/download.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Block directory browsing
+Options -Indexes
+
+# Block access to hidden files
+<Files ".*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Custom error pages
+ErrorDocument 403 /index.html
+ErrorDocument 404 /index.html
+ErrorDocument 500 /index.html
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Block common attack patterns
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block access to sensitive directories
+    RewriteRule ^(data|config|files/backup_.*|files/students)/ - [F,L]
+    
+    # Block access to sensitive file types
+    RewriteRule \.(json|env|log|tmp|cache|bak|old)$ - [F,L]
+    
+    # Block access to utility scripts
+    RewriteRule ^(cleanup_.*|setup_.*|test_.*)\.php$ - [F,L]
+</IfModule>

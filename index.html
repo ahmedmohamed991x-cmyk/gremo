@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة المنح الدراسية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>image.png
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span>شركة جريمو</span>
+            </div>
+            <div class="subtitle">نظام الإدارة</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item active" data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>لوحة التحكم</span>
+            </li>
+            <li class="nav-item" data-page="clients">
+                <i class="fas fa-users"></i>
+                <span>إدارة الطلاب</span>
+            </li>
+            <li class="nav-item" data-page="payments">
+                <i class="fas fa-credit-card"></i>
+                <span>تتبع المدفوعات</span>
+            </li>
+            <li class="nav-item" data-page="students">
+                <i class="fas fa-graduation-cap"></i>
+                <span>إدارة التقديم</span>
+            </li>
+            <li class="nav-item" data-page="admins">
+                <i class="fas fa-user-shield"></i>
+                <span>إدارة المشرفين </span>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span id="currentUser">المدير الرئيسي</span>
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>تسجيل الخروج</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <div class="page-header">
+                <h1>نظام إدارة المنح الدراسية</h1>
+                <p>لوحة تحكم شاملة لإدارة طلبات المنح</p>
+            </div>
+
+            <!-- Analytics Cards -->
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="card-icon revenue">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>إجمالي الإيرادات</h3>
+                        <div class="amount">0 ج.م</div>
+                        <div class="change">لا توجد بيانات</div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>الطلبات المعلقة</h3>
+                        <div class="amount">0</div>
+                        <div class="change">لا توجد بيانات</div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-icon applied">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>الطلبات المقدمة</h3>
+                        <div class="amount">0</div>
+                        <div class="change">لا توجد بيانات</div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-icon total">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>إجمالي الطلاب</h3>
+                        <div class="amount">0</div>
+                        <div class="change">لا توجد بيانات</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Status Cards -->
+            <div class="status-grid">
+                <div class="status-card accepted">
+                    <div class="status-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="status-content">
+                        <h3>الطلبات المقبولة</h3>
+                        <div class="count">0</div>
+                    </div>
+                </div>
+
+                <div class="status-card rejected">
+                    <div class="status-icon">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="status-content">
+                        <h3>الطلبات المرفوضة</h3>
+                        <div class="count">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome Message -->
+            <div class="welcome-section">
+                <div class="welcome-card">
+                    <h2>مرحباً بك في نظام إدارة المنح الدراسية</h2>
+                    <p>ابدأ بإضافة العملاء أو استيراد البيانات من ملف Excel</p>
+                    <div class="welcome-actions">
+                        <button class="btn-primary" onclick="openAddClientModal()">
+                            <i class="fas fa-plus"></i>
+                            إضافة عميل جديد
+                        </button>
+                        <button class="btn-secondary" onclick="openExcelImportModal()">
+                            <i class="fas fa-file-excel"></i>
+                            استيراد من Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clients Page -->
+        <div id="clients" class="page">
+            <div class="page-header">
+                <h1>إدارة الطلاب</h1>
+                <p>إضافة وإدارة طلاب طلبات المنح الدراسية</p>
+            </div>
+
+                            <div class="clients-actions">
+                    <div class="action-buttons">
+                        <button class="add-client-btn" onclick="openAddClientModal()">
+                            <i class="fas fa-plus"></i>
+                            إضافة طالب جديد
+                        </button>
+                        <button class="import-excel-btn" onclick="openExcelImportModal()">
+                            <i class="fas fa-file-excel"></i>
+                            استيراد من Excel
+                        </button>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" id="clientSearch" placeholder="البحث عن الطلاب...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button class="update-database-btn" onclick="syncGoogleSheets()">
+                        <i class="fas fa-sync"></i>
+                        تحديث قاعدة البيانات
+                    </button>
+                    <button class="btn btn-info" onclick="showColumnMapping()" style="margin-left: 10px; display: none;" id="columnMappingBtn">
+                        <i class="fas fa-map"></i>
+                        تخطيط الأعمدة
+                    </button>
+                    <button class="btn btn-warning" id="changeSheetIdBtn" onclick="showChangeSheetIdModal()" style="display: none; margin-left: 10px;">
+                        <i class="fas fa-key"></i>
+                        تغيير Google Sheet ID
+                    </button>
+                </div>
+
+            <div class="clients-grid" id="clientsGrid">
+                <!-- Client cards will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Payments Page -->
+        <div id="payments" class="page">
+            <div class="page-header">
+                <h1>تتبع المدفوعات</h1>
+                <p>إدارة وتتبع جميع مدفوعات العملاء</p>
+            </div>
+
+            <div class="payments-summary">
+                <div class="summary-card">
+                    <h3>إجمالي المدفوعات</h3>
+                    <div class="amount">0 ج.م</div>
+                </div>
+                <div class="summary-card">
+                    <h3>المدفوعات المعلقة</h3>
+                    <div class="amount">0 ج.م</div>
+                </div>
+                <div class="summary-card">
+                    <h3>إجمالي الطلاب</h3>
+                    <div class="amount">0</div>
+                </div>
+            </div>
+
+            <div class="payments-search">
+                <input type="text" id="paymentSearch" placeholder="البحث عن المدفوعات...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <div class="payments-grid" id="paymentsGrid">
+                <!-- Payment cards will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Admins Page -->
+        <div id="admins" class="page">
+            <div class="page-header">
+                <h1>إدارة المشرفين</h1>
+                <p>إدارة المشرفين وتوزيع الطلاب والمراقبة</p>
+            </div>
+
+            <!-- Admin Analytics -->
+            <div class="admin-analytics">
+                <div class="analytics-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>إجمالي المشرفين</h3>
+                        <div class="amount" id="totalAdmins">0</div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>الطلاب الموزعين</h3>
+                        <div class="amount" id="distributedStudents">0</div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>متوسط الطلاب لكل مشرف</h3>
+                        <div class="amount" id="avgStudentsPerAdmin">0</div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>طلبات المساعدة</h3>
+                        <div class="amount" id="helpRequests">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admins-actions">
+                <button class="add-admin-btn" onclick="openAddAdminModal()" id="addAdminBtn" style="display: none;">
+                    <i class="fas fa-plus"></i>
+                    إضافة مشرف جديد
+                </button>
+                <button class="view-logs-btn" onclick="showAdminLogs()" id="viewLogsBtn" style="display: none;">
+                    <i class="fas fa-history"></i>
+                    عرض السجلات
+                </button>
+                <button class="distribute-students-btn" onclick="showStudentDistribution()" id="distributeStudentsBtn" style="display: none;">
+                    <i class="fas fa-random"></i>
+                    توزيع الطلاب
+                </button>
+            </div>
+
+            <div class="admins-grid" id="adminsGrid">
+                <!-- Admin cards will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Students Page -->
+        <div id="students" class="page">
+            <div class="page-header">
+                <h1>معلومات التقديم</h1>
+                <p>إدارة طلبات الطلاب وتتبع متطلبات التقديم</p>
+            </div>
+
+            <div class="students-actions">
+                <div class="action-buttons">
+                    <button class="add-student-btn" onclick="openAddStudentModal()">
+                        <i class="fas fa-plus"></i>
+                        إضافة طالب جديد
+                    </button>
+                    <button class="sync-clients-btn" onclick="syncClientsToStudents()">
+                        <i class="fas fa-sync"></i>
+                        مزامنة مع العملاء
+                    </button>
+                                    <button class="import-sections-btn" onclick="showImportSectionsModal()">
+                    <i class="fas fa-cog"></i>
+                    إدارة الأقسام
+                </button>
+                    <button class="btn-info" id="requestAssistantBtn" onclick="showHelperForUnassigned()">
+                        <i class="fas fa-handshake"></i>
+                        كن مساعداً
+                    </button>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="studentSearch" placeholder="البحث عن الطلاب...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-container">
+                    <select id="statusFilter">
+                        <option value="">جميع الحالات</option>
+                        <option value="لم يتم التقديم">لم يتم التقديم</option>
+                        <option value="قيد التقديم">قيد التقديم</option>
+                        <option value="مكتمل">مكتمل</option>
+                        <option value="معلق">معلق</option>
+                    </select>
+                    <button class="btn-secondary" id="helpInboxBtn" onclick="openHelpInbox()">
+                        <i class="fas fa-bell"></i>
+                        الإشعارات
+                        <span id="helpUnreadBadge" style="display:none;margin-right:6px;background:#ef4444;color:#fff;border-radius:12px;padding:0 6px;font-size:12px;">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="students-grid" id="studentsGrid">
+                <!-- Student cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Client Modal -->
+    <div id="addClientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إضافة طالب جديد</h2>
+                <button class="close-btn" onclick="closeModal('addClientModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addClientForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>نوع المنحة</label>
+                    <select name="scholarshipType" required>
+                        <option value="">اختر نوع المنحة</option>
+                        <option value="بكالوريوس">بكالوريوس</option>
+                        <option value="ماجستير">ماجستير</option>
+                        <option value="دكتوراه">دكتوراه</option>
+                        <option value="منحة الديانة الثانوية">منحة الديانة الثانوية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الجامعة</label>
+                    <input type="text" name="university" required>
+                </div>
+                <div class="form-group">
+                    <label>التخصص</label>
+                    <input type="text" name="specialization" required>
+                </div>
+                <div class="form-group">
+                    <label>حالة الطلب</label>
+                    <select name="applicationStatus" required>
+                        <option value="لم يتم التقديم">لم يتم التقديم</option>
+                        <option value="تم التقديم">تم التقديم</option>
+                        <option value="مقبول">مقبول</option>
+                        <option value="مرفوض">مرفوض</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات</label>
+                    <textarea name="notes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('addClientModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="submit-btn">إضافة الطالب</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Excel Import Modal -->
+    <div id="excelImportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>استيراد البيانات من Excel</h2>
+                <button class="close-btn" onclick="closeModal('excelImportModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="excelImportForm">
+                <div class="form-group">
+                    <label>ملف Excel (.xlsx, .xls)</label>
+                    <input type="file" name="excelFile" accept=".xlsx,.xls" required>
+                </div>
+                <div class="form-group">
+                    <label>معلومات مهمة:</label>
+                    <div class="format-info">
+                        <p><strong>سيتم عرض جميع أعمدة الملف لك لتحديد الأعمدة المطلوبة</strong></p>
+                        <p>الأعمدة المطلوبة:</p>
+                        <ul>
+                            <li><strong>الاسم الكامل</strong> - مطلوب</li>
+                            <li><strong>البريد الإلكتروني</strong> - مطلوب</li>
+                            <li><strong>رقم الهاتف</strong> - مطلوب</li>
+                            <li>نوع المنحة - اختياري</li>
+                            <li>الجامعة - اختياري</li>
+                            <li>التخصص - اختياري</li>
+                            <li>ملاحظات - اختياري</li>
+                        </ul>
+                        <p><em>يمكنك استخدام أي أسماء أعمدة في ملف Excel الخاص بك</em></p>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('excelImportModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="submit-btn">استيراد البيانات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Admin Modal -->
+    <div id="addAdminModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إضافة مشرف جديد</h2>
+                <button class="close-btn" onclick="closeModal('addAdminModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addAdminForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label>الصلاحية</label>
+                    <select name="role" required>
+                        <option value="">اختر الصلاحية</option>
+                        <option value="مشرف">مشرف</option>
+                        <option value="مدير">مدير</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('addAdminModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="submit-btn">إضافة المشرف</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Client Details Modal -->
+    <div id="clientDetailsModal" class="modal">
+        <div class="modal-content expandable-modal">
+            <div class="modal-header">
+                <h2>تفاصيل العميل</h2>
+                <div class="modal-actions">
+                    <button class="expand-btn" onclick="toggleModalSize('clientDetailsModal')">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="edit-columns-btn" onclick="toggleColumnEdit()">
+                        <i class="fas fa-edit"></i>
+                        تعديل الأعمدة
+                    </button>
+                    <button class="close-btn" onclick="closeModal('clientDetailsModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="clientDetailsContent" class="expandable-content">
+                <!-- Client details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Details Modal -->
+    <div id="paymentDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تفاصيل الدفع</h2>
+                <button class="close-btn" onclick="closeModal('paymentDetailsModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="paymentDetailsContent">
+                <!-- Payment details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Status Modal -->
+    <div id="applicationStatusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تحديث حالة الطلب</h2>
+                <button class="close-btn" onclick="closeModal('applicationStatusModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="applicationStatusForm">
+                <input type="hidden" name="clientId" id="statusClientId">
+                <div class="form-group">
+                    <label>حالة الطلب</label>
+                    <select name="applicationStatus" required>
+                        <option value="لم يتم التقديم">لم يتم التقديم</option>
+                        <option value="تم التقديم">تم التقديم</option>
+                        <option value="مقبول">مقبول</option>
+                        <option value="مرفوض">مرفوض</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('applicationStatusModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="submit-btn">تحديث الحالة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Client Modal -->
+    <div id="editClientModal" class="modal edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تعديل بيانات الطالب</h2>
+                <button class="close-btn" onclick="closeModal('editClientModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editClientForm" class="edit-form">
+                <input type="hidden" name="clientId" id="editClientId">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" name="fullName" id="editFullName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" name="phone" id="editPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>نوع المنحة</label>
+                    <select name="scholarshipType" id="editScholarshipType" required>
+                        <option value="بكالوريوس">بكالوريوس</option>
+                        <option value="ماجستير">ماجستير</option>
+                        <option value="دكتوراه">دكتوراه</option>
+                        <option value="منحة الديانة الثانوية">منحة الديانة الثانوية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الجامعة</label>
+                    <input type="text" name="university" id="editUniversity">
+                </div>
+                <div class="form-group">
+                    <label>التخصص</label>
+                    <input type="text" name="specialization" id="editSpecialization">
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات</label>
+                    <textarea name="notes" id="editNotes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('editClientModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="update-btn">تحديث البيانات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Payment Modal -->
+    <div id="editPaymentModal" class="modal edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تعديل بيانات الدفع</h2>
+                <button class="close-btn" onclick="closeModal('editPaymentModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editPaymentForm" class="edit-form">
+                <input type="hidden" name="paymentId" id="editPaymentId">
+                <div class="form-group">
+                    <label>اسم العميل</label>
+                    <input type="text" name="clientName" id="editClientName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>حالة الدفع</label>
+                    <select name="paymentStatus" id="editPaymentStatus" required>
+                        <option value="معلق">معلق</option>
+                        <option value="مدفوع">مدفوع</option>
+                        <option value="مرفوض">مرفوض</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>مبلغ الدفع (جنيه مصري)</label>
+                    <input type="number" name="paymentAmount" id="editPaymentAmount" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>رقم الدفع من</label>
+                    <input type="text" name="paymentFrom" id="editPaymentFrom">
+                </div>
+                <div class="form-group">
+                    <label>رقم الدفع إلى</label>
+                    <input type="text" name="paymentTo" id="editPaymentTo">
+                </div>
+                <div class="form-group">
+                    <label>صورة الدفع</label>
+                    <input type="file" id="editPaymentScreenshotFile" accept="image/*">
+                    <small>يمكنك رفع لقطة شاشة لإثبات الدفع (PNG/JPG)</small>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات الدفع</label>
+                    <textarea name="paymentNotes" id="editPaymentNotes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('editPaymentModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="update-btn">تحديث الدفع</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Admin Modal -->
+    <div id="editAdminModal" class="modal edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تعديل بيانات المشرف</h2>
+                <button class="close-btn" onclick="closeModal('editAdminModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editAdminForm" class="edit-form">
+                <input type="hidden" name="adminId" id="editAdminId">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" name="fullName" id="editAdminFullName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" id="editAdminEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور الجديدة (اتركها فارغة إذا لم ترد تغييرها)</label>
+                    <input type="password" name="password" id="editAdminPassword">
+                </div>
+                <div class="form-group">
+                    <label>الصلاحية</label>
+                    <select name="role" id="editAdminRole" required>
+                        <option value="مشرف">مشرف</option>
+                        <option value="مدير">مدير</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('editAdminModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="update-btn">تحديث المشرف</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Student Modal -->
+    <div id="addStudentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إضافة طالب جديد</h2>
+                <button class="close-btn" onclick="closeModal('addStudentModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addStudentForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>نوع المنحة</label>
+                    <select name="scholarshipType" required>
+                        <option value="">اختر نوع المنحة</option>
+                        <option value="تالته اعدادي">تالته اعدادي</option>
+                        <option value="اولي ثانوي">اولي ثانوي</option>
+                        <option value="تانيه ثانوي">تانيه ثانوي</option>
+                        <option value="بكالوريوس">بكالوريوس</option>
+                        <option value="ماجستير">ماجستير</option>
+                        <option value="دكتوراه">دكتوراه</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الجامعة</label>
+                    <input type="text" name="university">
+                </div>
+                <div class="form-group">
+                    <label>التخصص</label>
+                    <input type="text" name="specialization">
+                </div>
+                <div class="form-group">
+                    <label>حالة الطلب</label>
+                    <select name="applicationStatus" required>
+                        <option value="لم يتم التقديم">لم يتم التقديم</option>
+                        <option value="قيد التقديم">قيد التقديم</option>
+                        <option value="مكتمل">مكتمل</option>
+                        <option value="معلق">معلق</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات</label>
+                    <textarea name="notes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeModal('addStudentModal')" class="cancel-btn">إلغاء</button>
+                    <button type="submit" class="submit-btn">إضافة الطالب</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Student Details Modal -->
+    <div id="studentDetailsModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-graduate"></i> عرض تفاصيل الطالب</h2>
+                <button class="close-btn" onclick="closeStudentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="student-info">
+                    <div class="info-section">
+                        <h3><i class="fas fa-user"></i> المعلومات الأساسية</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label><i class="fas fa-signature"></i> الاسم:</label>
+                                <span id="studentName" class="info-value"></span>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-envelope"></i> البريد الإلكتروني:</label>
+                                <span id="studentEmail" class="info-value"></span>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-phone"></i> رقم الهاتف:</label>
+                                <span id="studentPhone" class="info-value"></span>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-graduation-cap"></i> نوع المنحة:</label>
+                                <span id="studentScholarshipType" class="info-value"></span>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-clipboard-check"></i> حالة الطلب:</label>
+                                <span id="studentApplicationStatus" class="info-value status-badge"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section" id="customFieldsSection">
+                        <h3><i class="fas fa-list"></i> الأقسام المخصصة</h3>
+                        <div class="info-grid" id="customFields">
+                            <!-- Custom fields will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3><i class="fas fa-tasks"></i> متطلبات التقديم</h3>
+                        <div class="requirements-grid">
+                            <div class="requirement-item">
+                                <label><i class="fas fa-file-alt"></i> بيان الغرض (Statement of Purpose)</label>
+                                <div class="readonly-text" id="sopDisplay"></div>
+                                <button class="btn-secondary" onclick="editSOP()">
+                                    <i class="fas fa-edit"></i> تعديل
+                                </button>
+                            </div>
+                            <div class="requirement-item">
+                                <label><i class="fas fa-envelope-open"></i> خطاب التوصية (Letter of Recommendation)</label>
+                                <div class="readonly-text" id="lorDisplay"></div>
+                                <button class="btn-secondary" onclick="editLOR()">
+                                    <i class="fas fa-edit"></i> تعديل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>
+                            <i class="fas fa-paperclip"></i> الملفات المرفقة
+                            <button class="btn btn-refresh" onclick="forceRefreshFiles()" style="margin-left: 10px; padding: 5px 10px; font-size: 12px;">
+                                <i class="fas fa-sync-alt"></i> تحديث
+                            </button>
+                        </h3>
+                        <div class="files-section">
+                            <div class="files-list" id="filesList">
+                                <!-- Files will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3><i class="fas fa-link"></i> روابط Google Drive</h3>
+                        <div class="drive-links" id="driveLinks">
+                            <!-- Drive links will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="editCurrentStudent()">
+                    <i class="fas fa-edit"></i> تعديل الطالب
+                </button>
+                <button class="btn btn-download-all" onclick="downloadAllFiles()">
+                    <i class="fas fa-download"></i> تحميل جميع الملفات
+                </button>
+                <button class="btn btn-skip" onclick="skipStudent()">
+                    <i class="fas fa-forward"></i> تخطي الطالب
+                </button>
+                <button class="btn btn-close" onclick="closeStudentModal()">
+                    <i class="fas fa-times"></i> إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student Modal -->
+    <div id="editStudentModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> تعديل بيانات الطالب</h2>
+                <button class="close-btn" onclick="closeEditStudentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editStudentForm">
+                <input type="hidden" name="studentId" id="editStudentId">
+                
+                <!-- Basic Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> المعلومات الأساسية</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" name="fullName" id="editStudentFullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" name="email" id="editStudentEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" name="phone" id="editStudentPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نوع المنحة</label>
+                            <select name="scholarshipType" id="editStudentScholarshipType" required>
+                                <option value="تالته اعدادي">تالته اعدادي</option>
+                                <option value="اولي ثانوي">اولي ثانوي</option>
+                                <option value="تانيه ثانوي">تانيه ثانوي</option>
+                                <option value="بكالوريوس">بكالوريوس</option>
+                                <option value="ماجستير">ماجستير</option>
+                                <option value="دكتوراه">دكتوراه</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الجامعة</label>
+                            <input type="text" name="university" id="editStudentUniversity">
+                        </div>
+                        <div class="form-group">
+                            <label>التخصص</label>
+                            <input type="text" name="specialization" id="editStudentSpecialization">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>حالة الطلب</label>
+                            <select name="applicationStatus" id="editStudentApplicationStatus" required>
+                                <option value="لم يتم التقديم">لم يتم التقديم</option>
+                                <option value="قيد التقديم">قيد التقديم</option>
+                                <option value="مكتمل">مكتمل</option>
+                                <option value="معلق">معلق</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ملاحظات</label>
+                            <textarea name="notes" id="editStudentNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Custom Fields -->
+                <div class="form-section">
+                    <h3><i class="fas fa-list"></i> الأقسام المخصصة</h3>
+                    <div id="editCustomFields">
+                        <!-- Custom fields will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- File Management -->
+                <div class="form-section">
+                    <h3><i class="fas fa-paperclip"></i> إدارة الملفات</h3>
+                    <div class="form-group">
+                        <label>رفع ملفات جديدة</label>
+                        <div class="upload-area">
+                            <input type="file" id="fileUpload" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                            <label for="fileUpload" class="upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>اختر ملفات أو اسحبها هنا</span>
+                                <small>يدعم رفع ملف واحد أو عدة ملفات. ممنوع رفع بيانات الشركة أو الملفات المحظورة.</small>
+                            </label>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" onclick="closeEditStudentModal()" class="cancel-btn">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                    <button type="submit" class="update-btn">
+                        <i class="fas fa-save"></i> تحديث الطالب
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit SOP Modal -->
+    <div id="editSOPModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تعديل بيان الغرض</h2>
+                <button class="close-btn" onclick="closeEditSOPModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>بيان الغرض (Statement of Purpose)</label>
+                    <textarea id="editSOPText" rows="10" placeholder="اكتب بيان الغرض هنا..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeEditSOPModal()">إلغاء</button>
+                <button class="btn-primary" onclick="saveSOP()">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit LOR Modal -->
+    <div id="editLORModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تعديل خطاب التوصية</h2>
+                <button class="close-btn" onclick="closeEditLORModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>خطاب التوصية (Letter of Recommendation)</label>
+                    <textarea id="editLORText" rows="10" placeholder="اكتب خطاب التوصية هنا..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeEditLORModal()">إلغاء</button>
+                <button class="btn-primary" onclick="saveLOR()">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Sections Modal -->
+    <div id="importSectionsModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-list"></i> إدارة الأعمدة</h2>
+                <button class="close-btn" onclick="closeImportSectionsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="import-actions" style="margin-bottom: 20px; text-align: center;">
+                    <button class="btn btn-primary" onclick="importFromClients()" style="margin-right: 10px;">
+                        <i class="fas fa-download"></i> استيراد من العملاء
+                    </button>
+                    <button class="btn btn-success" onclick="syncAllColumns()" style="margin-right: 10px;">
+                        <i class="fas fa-sync"></i> مزامنة كاملة
+                    </button>
+                                    <p style="margin-top: 10px; color: #6b7280; font-size: 14px;">
+                    اضغط هنا لاستيراد الأعمدة الجديدة من ملف العملاء أو مزامنة جميع الأعمدة
+                </p>
+                </div>
+                
+
+                
+                <div class="sections-container">
+                    <h3><i class="fas fa-columns"></i> الأعمدة المتاحة:</h3>
+                    <div id="sectionsList" class="sections-list">
+                        <!-- Sections will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                            <button class="btn btn-primary" onclick="closeImportSectionsModal()">
+                <i class="fas fa-check"></i> إغلاق
+            </button>
+                <button class="btn btn-secondary" onclick="closeImportSectionsModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Distribution Modal -->
+    <div id="studentDistributionModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-random"></i> توزيع الطلاب على المشرفين</h2>
+                <button class="close-btn" onclick="closeStudentDistributionModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="distribution-info">
+                    <div class="info-card">
+                        <h3>معلومات التوزيع</h3>
+                        <p>إجمالي الطلاب: <span id="totalStudentsCount">0</span></p>
+                        <p>إجمالي المشرفين: <span id="totalAdminsCount">0</span></p>
+                        <p>متوسط الطلاب لكل مشرف: <span id="avgStudentsDisplay">0</span></p>
+                    </div>
+                </div>
+                
+                <div class="distribution-controls">
+                    <button class="btn btn-primary" onclick="autoDistributeStudents()">
+                        <i class="fas fa-magic"></i> توزيع تلقائي
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetDistribution()">
+                        <i class="fas fa-undo"></i> إعادة تعيين
+                    </button>
+                </div>
+
+                <div class="distribution-list">
+                    <h3>توزيع الطلاب الحالي</h3>
+                    <div id="distributionList">
+                        <!-- Distribution will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveDistribution()">
+                    <i class="fas fa-save"></i> حفظ التوزيع
+                </button>
+                <button class="btn btn-secondary" onclick="closeStudentDistributionModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Logs Modal -->
+    <div id="adminLogsModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-history"></i> سجلات النظام</h2>
+                <button class="close-btn" onclick="closeAdminLogsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="logs-filters">
+                    <select id="logTypeFilter">
+                        <option value="">جميع الأنواع</option>
+                        <option value="file_upload">رفع ملفات</option>
+                        <option value="status_change">تغيير حالة</option>
+                        <option value="student_assignment">تعيين طالب</option>
+                        <option value="help_request">طلب مساعدة</option>
+                    </select>
+                    <select id="adminFilter">
+                        <option value="">جميع المشرفين</option>
+                    </select>
+                    <input type="date" id="logDateFilter">
+                </div>
+                
+                <div class="logs-container">
+                    <div id="logsList">
+                        <!-- Logs will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeAdminLogsModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Inbox Modal -->
+    <div id="helpInboxModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-bell"></i> الإشعارات</h2>
+                <button class="close-btn" onclick="closeHelpInboxModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-tabs" style="display:flex; gap:10px; margin-bottom:12px;">
+                    <button id="tabPending" class="btn-secondary" onclick="switchHelpTab('pending')">الإشعارات</button>
+                    <button id="tabPermissions" class="btn-secondary" onclick="switchHelpTab('permissions')">الأذونات</button>
+                </div>
+                <div id="helpPendingList" class="logs-container" style="max-height: 60vh; overflow:auto;"></div>
+                <div id="helpPermissionsList" class="logs-container" style="max-height: 60vh; overflow:auto; display:none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeHelpInboxModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Details Modal -->
+    <div id="adminDetailsModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-shield"></i> تفاصيل المشرف</h2>
+                <button class="close-btn" onclick="closeAdminDetailsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="admin-info-section">
+                    <div class="admin-basic-info">
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="admin-details">
+                            <h3 id="adminDetailsName">اسم المشرف</h3>
+                            <p id="adminDetailsEmail">البريد الإلكتروني</p>
+                            <p id="adminDetailsRole">الدور</p>
+                            <p id="adminDetailsDate">تاريخ الإضافة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4>إجمالي الطلاب</h4>
+                                <div class="stat-number" id="adminTotalStudents">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4>الطلاب المكتملين</h4>
+                                <div class="stat-number" id="adminCompletedStudents">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4>الطلاب المعلقين</h4>
+                                <div class="stat-number" id="adminPendingStudents">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4>إجمالي الملفات</h4>
+                                <div class="stat-number" id="adminTotalFiles">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-students-section">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3><i class="fas fa-user-graduate"></i> الطلاب المسؤول عنهم</h3>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-primary" onclick="refreshAdminStatisticsFromModal()" style="padding: 8px 15px; font-size: 12px;">
+                                <i class="fas fa-sync-alt"></i> تحديث الإحصائيات
+                            </button>
+                            <button class="btn btn-info" onclick="showStudentTransferModal()" style="padding: 8px 15px; font-size: 12px;">
+                                <i class="fas fa-exchange-alt"></i> نقل طالب
+                            </button>
+                        </div>
+                    </div>
+                    <div id="adminStudentsList" class="students-list">
+                        <!-- Students will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeAdminDetailsModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Google Sheet ID Modal -->
+    <div id="changeSheetIdModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-key"></i> تغيير Google Sheet ID</h2>
+                <button class="close-btn" onclick="closeChangeSheetIdModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Google Sheet ID الحالي:</label>
+                    <input type="text" id="currentSheetId" readonly class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Google Sheet ID الجديد:</label>
+                    <input type="text" id="newSheetId" placeholder="أدخل Google Sheet ID الجديد" class="form-control">
+                    <small class="form-text">مثال: 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms</small>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور للتأكيد:</label>
+                    <input type="password" id="confirmPassword" placeholder="أدخل كلمة المرور للتأكيد" class="form-control">
+                    <small class="form-text">يجب إدخال كلمة المرور للتأكيد على التغيير</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeChangeSheetIdModal()">إلغاء</button>
+                <button class="btn btn-warning" onclick="updateGoogleSheetId()">
+                    <i class="fas fa-save"></i>
+                    تحديث Google Sheet ID
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Transfer Modal -->
+    <div id="studentTransferModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exchange-alt"></i> نقل طالب إلى مشرف آخر</h2>
+                <button class="close-btn" onclick="closeStudentTransferModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>اختر الطالب:</label>
+                    <select id="transferStudentSelect" class="form-control">
+                        <option value="">اختر الطالب</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>المشرف الجديد:</label>
+                    <select id="transferToAdmin" class="form-control">
+                        <option value="">اختر المشرف الجديد</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="confirmTransfer">
+                        <span class="checkmark"></span>
+                        أؤكد على نقل الطالب إلى المشرف الجديد
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeStudentTransferModal()">إلغاء</button>
+                <button class="btn btn-primary" onclick="transferStudent()">
+                    <i class="fas fa-exchange-alt"></i>
+                    نقل الطالب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Request Modal -->
+    <div id="helpRequestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-handshake"></i> طلب أن تكون مساعداً</h2>
+                <button class="close-btn" onclick="closeHelpRequestModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>الطالب الذي تريد أن تكون مساعداً له:</label>
+                    <select id="helpStudentSelect">
+                        <option value="">اختر الطالب</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>نوع المساعدة التي ستقدمها:</label>
+                    <select id="helpTypeSelect">
+                        <option value="">اختر نوع المساعدة</option>
+                        <option value="document_review">مراجعة مستندات</option>
+                        <option value="application_filing">ملء الطلب</option>
+                        <option value="file_upload">رفع ملفات</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>تفاصيل المساعدة التي ستقدمها:</label>
+                    <textarea id="helpDetails" rows="4" placeholder="اشرح كيف ستساعد الطالب..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="sendHelpRequest()">
+                    <i class="fas fa-handshake"></i> طلب أن أكون مساعداً
+                </button>
+                <button class="btn btn-secondary" onclick="closeHelpRequestModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

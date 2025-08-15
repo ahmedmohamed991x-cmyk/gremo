@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test View Button + Access Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+        .file-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .file-actions { margin-top: 10px; }
+        .btn { margin: 5px; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-danger { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test View Button + Access Control</h1>
+    
+    <h2>Test 1: View Button Test</h2>
+    <div id="filesList"></div>
+    <button onclick="testViewButton()">Test View Button</button>
+    <div id="viewResult"></div>
+    
+    <h2>Test 2: Access Control Test</h2>
+    <button onclick="testAccessControl()">Test Access Control</button>
+    <div id="accessResult"></div>
+    
+    <h2>Test 3: Access Control Debug</h2>
+    <button onclick="testAccessControlDebug()">Test Access Control Debug</button>
+    <div id="accessDebugResult"></div>
+
+    <h2>Test View Function Fix</h2>
+    <button onclick="testViewFileFix()">Test View File Fix</button>
+    <div id="viewTestResult"></div>
+
+    <script>
+        // Mock file data for testing
+        const testFiles = [
+            {
+                id: "test1",
+                name: "why.jpg",
+                path: "C:\\Users\\StormBtw\\Desktop\\Project\\backend\\..\\files\\students\\4_يوسف محمد عوض عبدالعاطي هيكل\\why.jpg",
+                size: 743998,
+                type: "image/jpeg",
+                modified: "2025-08-15 09:33:44"
+            }
+        ];
+        
+        // Render test files
+        function renderTestFiles() {
+            const container = document.getElementById('filesList');
+            container.innerHTML = '';
+            
+            testFiles.forEach(file => {
+                const fileElement = document.createElement('div');
+                fileElement.className = 'file-item';
+                
+                fileElement.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-header">
+                            <span class="file-name">${file.name}</span>
+                        </div>
+                        <div class="file-details">
+                            <small>Size: ${file.size} bytes</small>
+                            <small>Type: ${file.type}</small>
+                        </div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn btn-primary" onclick="viewFile('${file.path}', '${file.name}', '${file.type}')" title="عرض الملف">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteFile('${file.id}')" title="حذف الملف">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                container.appendChild(fileElement);
+            });
+        }
+        
+        // Test view button
+        function testViewButton() {
+            const result = document.getElementById('viewResult');
+            result.innerHTML = 'Testing view button...';
+            
+            try {
+                // Simulate clicking view button on first file
+                const file = testFiles[0];
+                viewFile(file.path, file.name, file.type);
+                
+                result.innerHTML = `
+                    <strong>View Button Test:</strong> ✅ Clicked<br>
+                    <strong>File:</strong> ${file.name}<br>
+                    <strong>Path:</strong> ${file.path}<br>
+                    <strong>Type:</strong> ${file.type}<br>
+                    <strong>Check console for logs</strong>
+                `;
+                result.className = 'result success';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Test access control
+        async function testAccessControl() {
+            const result = document.getElementById('accessResult');
+            result.innerHTML = 'Testing access control...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution');
+                const data = await response.json();
+                
+                result.innerHTML = `
+                    <strong>Distribution Status:</strong> ${data.success ? '✅ Success' : '❌ Failed'}<br>
+                    <strong>Distribution Data:</strong> <pre>${JSON.stringify(data.distribution, null, 2)}</pre>
+                `;
+                result.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Test access control debug
+        async function testAccessControlDebug() {
+            const result = document.getElementById('accessDebugResult');
+            result.innerHTML = 'Testing access control debug...';
+            
+            try {
+                const response = await fetch('backend/api.php?action=test_distribution_debug');
+                const data = await response.json();
+                
+                result.innerHTML = `
+                    <strong>Distribution Debug Status:</strong> ${data.success ? '✅ Success' : '❌ Failed'}<br>
+                    <strong>Distribution Debug Data:</strong> <pre>${JSON.stringify(data.distribution, null, 2)}</pre>
+                `;
+                result.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Copy the viewFile function from script.js
+        function viewFile(filePath, fileName, fileType) {
+            // Convert absolute server path to relative web path
+            let webPath = filePath;
+            
+            // If it's an absolute Windows path, convert to relative web path
+            if (filePath.includes('C:\\') || filePath.includes('\\')) {
+                // Extract the relative part after 'files/'
+                const filesIndex = filePath.indexOf('files/');
+                if (filesIndex !== -1) {
+                    webPath = filePath.substring(filesIndex);
+                }
+            }
+            
+            console.log('🔍 View file:', { originalPath: filePath, webPath: webPath, fileName, fileType });
+            
+            // For PDFs, open in new tab
+            if (fileType.includes('pdf')) {
+                window.open(webPath, '_blank');
+            }
+            // For images, show in modal
+            else if (fileType.includes('image')) {
+                // Use the real showImageModal function from script.js
+                if (typeof window.showImageModal === 'function') {
+                    window.showImageModal(webPath, fileName);
+                } else {
+                    // Fallback to simple image display
+                    const img = new Image();
+                    img.onload = function() {
+                        const modal = document.createElement('div');
+                        modal.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0,0,0,0.8);
+                            z-index: 9999;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        `;
+                        modal.innerHTML = `
+                            <div style="
+                                background: white;
+                                padding: 20px;
+                                border-radius: 8px;
+                                max-width: 90vw;
+                                max-height: 90vh;
+                                text-align: center;
+                            ">
+                                <h3>${fileName}</h3>
+                                <img src="${webPath}" style="max-width: 100%; max-height: 70vh; object-fit: contain;">
+                                <br><br>
+                                <button onclick="this.parentElement.parentElement.remove()" style="padding: 10px 20px;">Close</button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                    };
+                    img.src = webPath;
+                }
+            }
+            // For other files, try to download
+            else {
+                const link = document.createElement('a');
+                link.href = webPath;
+                link.download = fileName;
+                link.click();
+            }
+        }
+        
+        // Mock delete function
+        function deleteFile(fileId) {
+            console.log('Delete file:', fileId);
+            alert('Delete function called for file: ' + fileId);
+        }
+        
+        // Test the fixed viewFile function
+        function testViewFileFix() {
+            const result = document.getElementById('viewTestResult');
+            result.innerHTML = 'Testing viewFile function with problematic path...';
+            
+            try {
+                // Test with the exact path from the error
+                const testPath = 'C:\\Users\\StormBtw\\Desktop\\Project\\backend\\..\\files\\students\\4_يوسف محمد عوض عبدالعاطي هيكل\\why.jpg';
+                const testFileName = 'why.jpg';
+                const testFileType = 'image/jpeg';
+                
+                console.log('🧪 Testing viewFile with path:', testPath);
+                
+                // Call the viewFile function
+                if (typeof window.viewFile === 'function') {
+                    window.viewFile(testPath, testFileName, testFileType);
+                    result.innerHTML = `
+                        <strong>View File Test:</strong> ✅<br>
+                        <strong>Path:</strong> ${testPath}<br>
+                        <strong>Expected Conversion:</strong> files/students/4_يوسف محمد عوض عبدالعاطي هيكل/why.jpg<br>
+                        <strong>Status:</strong> Function called - check console for path conversion
+                    `;
+                    result.className = 'result success';
+                } else {
+                    result.innerHTML = 'viewFile function not available';
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+                result.className = 'result error';
+            }
+        }
+        
+        // Auto-render files on load
+        renderTestFiles();
+    </script>
+</body>
+</html>
