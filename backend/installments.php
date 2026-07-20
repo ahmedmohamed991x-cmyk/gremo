@@ -4,16 +4,20 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Simple Installments API for Gremo
+// Simple Installments & Withdrawals API for Gremo
 $dataDir = __DIR__ . '/../data/';
 if (!file_exists($dataDir)) { mkdir($dataDir, 0777, true); }
 
 $paymentsFile = $dataDir . 'payments.json';
 $clientsFile = $dataDir . 'clients.json';
 $installmentsFile = $dataDir . 'installments.json';
+$withdrawalsFile = $dataDir . 'withdrawals.json';
 
 if (!file_exists($installmentsFile)) {
     file_put_contents($installmentsFile, json_encode([], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+}
+if (!file_exists($withdrawalsFile)) {
+    file_put_contents($withdrawalsFile, json_encode([], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 }
 
 function readJsonFileLocal($file) {
@@ -90,11 +94,36 @@ try {
                 }
                 $karim_share = round($expectedRevenue * 0.5,2);
                 $mahmoud_share = round($expectedRevenue * 0.5,2);
+
+                // include withdrawals totals
+                $withdrawals = readJsonFileLocal($withdrawalsFile);
+                $totals = ['karim'=>0.0,'mahmoud'=>0.0];
+                foreach ($withdrawals as $w) {
+                    $owner = strtolower($w['owner'] ?? '');
+                    $amt = floatval($w['amount'] ?? 0);
+                    if ($owner === 'karim' || $owner === 'كريم') $totals['karim'] += $amt;
+                    else if ($owner === 'mahmoud' || $owner === 'محمود') $totals['mahmoud'] += $amt;
+                }
+
                 echo json_encode(['success'=>true,'data'=>[
                     'expectedRevenueAfterInstallments'=>round($expectedRevenue,2),
                     'details'=>$details,
-                    'profitDistribution'=>['karim'=>['totalShare'=>$karim_share],'mahmoud'=>['totalShare'=>$mahmoud_share]]
+                    'profitDistribution'=>['karim'=>['totalShare'=>$karim_share],'mahmoud'=>['totalShare'=>$mahmoud_share]],
+                    'withdrawalTotals'=>$totals,
+                    'withdrawals'=>$withdrawals
                 ]], JSON_UNESCAPED_UNICODE);
+                exit;
+
+            case 'get_withdrawals':
+                $withdrawals = readJsonFileLocal($withdrawalsFile);
+                $totals = ['karim'=>0.0,'mahmoud'=>0.0];
+                foreach ($withdrawals as $w) {
+                    $owner = strtolower($w['owner'] ?? '');
+                    $amt = floatval($w['amount'] ?? 0);
+                    if ($owner === 'karim' || $owner === 'كريم') $totals['karim'] += $amt;
+                    else if ($owner === 'mahmoud' || $owner === 'محمود') $totals['mahmoud'] += $amt;
+                }
+                echo json_encode(['success'=>true,'data'=>['withdrawals'=>$withdrawals,'totals'=>$totals]], JSON_UNESCAPED_UNICODE);
                 exit;
 
             default:
@@ -143,6 +172,35 @@ try {
                 }
                 writeJsonFileLocal($installmentsFile, $installments);
                 echo json_encode(['success'=>true,'message'=>'Installment updated'], JSON_UNESCAPED_UNICODE);
+                exit;
+
+            case 'add_withdrawal':
+                $owner = $input['owner'] ?? ($input['withdrawOwner'] ?? '');
+                $amount = floatval($input['amount'] ?? ($input['withdrawAmount'] ?? 0));
+                $note = $input['note'] ?? ($input['withdrawNote'] ?? '');
+                if (!$owner || $amount <= 0) { echo json_encode(['success'=>false,'message'=>'owner and positive amount required'], JSON_UNESCAPED_UNICODE); exit; }
+
+                $withdrawals = readJsonFileLocal($withdrawalsFile);
+                $record = [
+                    'id' => time() . '_' . rand(1000,9999),
+                    'owner' => $owner,
+                    'amount' => round($amount,2),
+                    'note' => $note,
+                    'date' => date('c')
+                ];
+                $withdrawals[] = $record;
+                writeJsonFileLocal($withdrawalsFile, $withdrawals);
+
+                // respond with updated totals
+                $totals = ['karim'=>0.0,'mahmoud'=>0.0];
+                foreach ($withdrawals as $w) {
+                    $ow = strtolower($w['owner'] ?? '');
+                    $amt = floatval($w['amount'] ?? 0);
+                    if ($ow === 'karim' || $ow === 'كريم') $totals['karim'] += $amt;
+                    else if ($ow === 'mahmoud' || $ow === 'محمود') $totals['mahmoud'] += $amt;
+                }
+
+                echo json_encode(['success'=>true,'message'=>'Withdrawal added','data'=>['record'=>$record,'totals'=>$totals]], JSON_UNESCAPED_UNICODE);
                 exit;
 
             default:
